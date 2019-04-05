@@ -23,7 +23,7 @@ For our app Stellar, users will be able to use AR (augmented reality) to learn a
 * ARKit
 
 ## Prerequisites
-* Xcode - 11.0+, set up on Swift Language
+* Xcode - 10.0+, set up on Swift Language
 * iOS 11.0+ / iPad Pro (9.7, 10.5 or 12.9) / iPad (2017 +)
 * Swift 4.0+
 
