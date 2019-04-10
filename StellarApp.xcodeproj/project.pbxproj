@@ -143,8 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				90BAD000225E87BA00587F57 /* CelestialBody.swift */,
-				90BACFFF225E87BA00587F57 /* Planet.swift */,
 				90BAD001225E87BA00587F57 /* PlanetaryBody.swift */,
+				90BACFFF225E87BA00587F57 /* Planet.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
