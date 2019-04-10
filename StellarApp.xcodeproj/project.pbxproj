@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6295AE3C225E3A6C007118E3 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6295AE3B225E3A6C007118E3 /* DBService.swift */; };
 		900A58BE2257F01100C2C626 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900A58BD2257F01100C2C626 /* AppDelegate.swift */; };
 		900A58C02257F01100C2C626 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 900A58BF2257F01100C2C626 /* art.scnassets */; };
 		900A58C22257F01100C2C626 /* SolarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900A58C12257F01100C2C626 /* SolarViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6295AE3B225E3A6C007118E3 /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
 		900A58BA2257F01100C2C626 /* StellarApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StellarApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		900A58BD2257F01100C2C626 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		900A58BF2257F01100C2C626 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				900C0E04225BEA560027BBF9 /* Protocols.swift */,
+				6295AE3B225E3A6C007118E3 /* DBService.swift */,
 				900C0DEF225BE90C0027BBF9 /* NewsAPIClient.swift */,
 				900C0DF1225BE91A0027BBF9 /* ImageHelper.swift */,
 			);
@@ -214,6 +217,7 @@
 				900A58BE2257F01100C2C626 /* AppDelegate.swift in Sources */,
 				900C0DF6225BE9300027BBF9 /* NewsInfo.swift in Sources */,
 				900C0DFC225BE9C90027BBF9 /* SolarDetailViewController.swift in Sources */,
+				6295AE3C225E3A6C007118E3 /* DBService.swift in Sources */,
 				900C0DF2225BE91A0027BBF9 /* ImageHelper.swift in Sources */,
 				900C0DFE225BE9DE0027BBF9 /* SideMenuViewController.swift in Sources */,
 				900C0DFA225BE9820027BBF9 /* MenuViewController.swift in Sources */,
