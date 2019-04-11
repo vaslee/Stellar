@@ -18,33 +18,49 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     let meterial = SCNMaterial()
     let sunNode = SCNNode()
     
-    private var planetObjects = [Planet]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the view's delegate
         sceneView.delegate = self
         
-        // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
         setUpSun()
         
-        planetObjects = Planet.loadPlanets
+        Planet.getPlanets().forEach { sceneView.scene.rootNode.addChildNode($0) }
         
-        // TESTING CODE:
-        //let node = Planet.getNode(image: UIImage(named: "art.scnassets/mercury.jpg")!, radius: 0.2, vector: (x: 1.3, y: -1, z: 0))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
+        sceneView.addGestureRecognizer(tapGestureRecognizer)
+        sceneView.addGestureRecognizer(pinchGestureRecognizer)
         
+    }
+    
+    @objc func tapped(sender: UITapGestureRecognizer) {
+        let tappedView = sender.view as!SCNView
+        let touchLocation = sender.location(in: tappedView)
+        let hitTest = tappedView.hitTest(touchLocation, options: nil)
+        if !hitTest.isEmpty {
+            print("yes")
+        }
+    }
+    
+    @objc func pinch(pinch: UIPinchGestureRecognizer) {
         
-        
-        planetObjects.forEach { sceneView.scene.rootNode.addChildNode($0.planetNode) }
-        
-        // TESTING CODE:
-        // let ring = Planet.getRing(radius: 2, vector: (x: 0, y: -1, z: 0), color: .yellow)
-        // planetObjects.forEach { sceneView.scene.rootNode.addChildNode($0.ringNode) }
-        //sceneView.scene.rootNode.addChildNode(node)
-        
+        for planet in Planet.getPlanets() {
+            if planet.name == Planet.planetNodes.first?.name {
+                
+                planet.enumerateChildNodes { (node, stop) in
+                    print("node: \(node.name ?? "no name")")
+                    if node.name == "jupiter" {
+                        node.scale.x = 5.0//newScale
+                        node.scale.y = 5.0//newScale
+                        node.scale.z = 5.0
+                    }
+                }
+            }
+        }
     }
     
     func setUpSun() {
