@@ -31,8 +31,6 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
        // let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
     }
     
-
-    
     @objc func tapped(sender: UITapGestureRecognizer) {
         let tappedView = sender.view as!SCNView
         let touchLocation = sender.location(in: tappedView)
