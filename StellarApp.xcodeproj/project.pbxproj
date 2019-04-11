@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B6254D9225FA55800704ED4 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6254D8225FA55800704ED4 /* NewsView.swift */; };
+		2B6254DC225FA65C00704ED4 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6254DB225FA65C00704ED4 /* NewsCollectionViewCell.swift */; };
 		900A58BE2257F01100C2C626 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900A58BD2257F01100C2C626 /* AppDelegate.swift */; };
 		900A58C02257F01100C2C626 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 900A58BF2257F01100C2C626 /* art.scnassets */; };
 		900A58C22257F01100C2C626 /* SolarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900A58C12257F01100C2C626 /* SolarViewController.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B6254D8225FA55800704ED4 /* NewsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsView.swift; path = ../NewsView.swift; sourceTree = "<group>"; };
+		2B6254DB225FA65C00704ED4 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		900A58BA2257F01100C2C626 /* StellarApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StellarApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		900A58BD2257F01100C2C626 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		900A58BF2257F01100C2C626 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -59,6 +63,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B6254DA225FA5D100704ED4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2B6254D8225FA55800704ED4 /* NewsView.swift */,
+				2B6254DB225FA65C00704ED4 /* NewsCollectionViewCell.swift */,
+			);
+			name = View;
+			path = Controllers/View;
+			sourceTree = "<group>";
+		};
 		900A58B12257F01100C2C626 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +96,7 @@
 				900C0E02225BEA0E0027BBF9 /* JSON */,
 				900C0E03225BEA1E0027BBF9 /* Models */,
 				900C0E01225BEA000027BBF9 /* Controllers */,
+				2B6254DA225FA5D100704ED4 /* View */,
 				900C0E06225BEA630027BBF9 /* Utilities */,
 				900A58BD2257F01100C2C626 /* AppDelegate.swift */,
 				900A58C32257F01100C2C626 /* Main.storyboard */,
@@ -206,7 +221,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				900C0DF0225BE90C0027BBF9 /* NewsAPIClient.swift in Sources */,
+				2B6254DC225FA65C00704ED4 /* NewsCollectionViewCell.swift in Sources */,
 				900C0DF4225BE9270027BBF9 /* PlanetsInfo.swift in Sources */,
+				2B6254D9225FA55800704ED4 /* NewsView.swift in Sources */,
 				900C0DF8225BE9780027BBF9 /* ContainerViewController.swift in Sources */,
 				900C0E05225BEA560027BBF9 /* Protocols.swift in Sources */,
 				900A58C22257F01100C2C626 /* SolarViewController.swift in Sources */,
@@ -362,8 +379,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RJ364J35FH;
+				DEVELOPMENT_TEAM = J5RSS76QPN;
 				INFOPLIST_FILE = StellarApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -371,6 +389,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pursuit.StellarApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -380,8 +399,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RJ364J35FH;
+				DEVELOPMENT_TEAM = J5RSS76QPN;
 				INFOPLIST_FILE = StellarApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -389,6 +409,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pursuit.StellarApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
