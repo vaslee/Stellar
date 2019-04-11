@@ -15,11 +15,7 @@ class ContainerViewController: UIViewController {
         return .lightContent
     }
     
-    public func configureSolarView() {
-        let solarView = SolarViewController()
-        
     
-    }
     
 
 }

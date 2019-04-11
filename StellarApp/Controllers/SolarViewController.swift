@@ -2,11 +2,10 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+class SolarViewController: UIViewController, ARSCNViewDelegate {
     
-    @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet weak var sceneView: ARSCNView!
     
-
     let sun = SCNSphere(radius: 0.5)
     let meterial = SCNMaterial()
     let sunNode = SCNNode()
@@ -24,18 +23,38 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         planetObjects = Planet.loadPlanets
         
-        // TESTING CODE:
-        //let node = Planet.getNode(image: UIImage(named: "art.scnassets/mercury.jpg")!, radius: 0.2, vector: (x: 1.3, y: -1, z: 0))
-        
-        
-        
         planetObjects.forEach { sceneView.scene.rootNode.addChildNode($0.planetNode) }
+
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        sceneView.addGestureRecognizer(tapGestureRecognizer)
         
-        // TESTING CODE:
-        // let ring = Planet.getRing(radius: 2, vector: (x: 0, y: -1, z: 0), color: .yellow)
-        // planetObjects.forEach { sceneView.scene.rootNode.addChildNode($0.ringNode) }
-        //sceneView.scene.rootNode.addChildNode(node)
+       // let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
+    }
+    
+
+    
+    @objc func tapped(sender: UITapGestureRecognizer) {
+        let tappedView = sender.view as!SCNView
+        let touchLocation = sender.location(in: tappedView)
+        let hitTest = tappedView.hitTest(touchLocation, options: nil)
+        if !hitTest.isEmpty {
+            self.present(MenuViewController(), animated: true, completion: nil)
+        }
+    }
+    
+    @objc func pinch(pinch: UIPinchGestureRecognizer) {
         
+        let pinchView = pinch.view as! SCNView
+        
+        
+        sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in // only zooming to big
+            if node.name == "mercury" {
+                print("node: \(node) stop: \(stop)")
+                node.scale.x = 2.0//newScale
+                node.scale.y = 2.0//newScale
+                node.scale.z = 2.0//newScale
+            }
+        }
     }
     
     func setUpSun() {
@@ -58,8 +77,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // Pause the view's session
         sceneView.session.pause()
     }
 
