@@ -24,6 +24,9 @@
 		900C0DFE225BE9DE0027BBF9 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C0DFD225BE9DE0027BBF9 /* SideMenuViewController.swift */; };
 		900C0E00225BE9E90027BBF9 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C0DFF225BE9E90027BBF9 /* NewsViewController.swift */; };
 		900C0E05225BEA560027BBF9 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C0E04225BEA560027BBF9 /* Protocols.swift */; };
+		90BAD002225E87BA00587F57 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BACFFF225E87BA00587F57 /* Planet.swift */; };
+		90BAD003225E87BA00587F57 /* CelestialBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BAD000225E87BA00587F57 /* CelestialBody.swift */; };
+		90BAD004225E87BA00587F57 /* PlanetaryBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BAD001225E87BA00587F57 /* PlanetaryBody.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		900C0DFD225BE9DE0027BBF9 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		900C0DFF225BE9E90027BBF9 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		900C0E04225BEA560027BBF9 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		90BACFFF225E87BA00587F57 /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		90BAD000225E87BA00587F57 /* CelestialBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelestialBody.swift; sourceTree = "<group>"; };
+		90BAD001225E87BA00587F57 /* PlanetaryBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetaryBody.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,7 @@
 			children = (
 				900A58BF2257F01100C2C626 /* art.scnassets */,
 				900C0E02225BEA0E0027BBF9 /* JSON */,
+				90BACFFD225E875E00587F57 /* Protocol */,
 				900C0E03225BEA1E0027BBF9 /* Models */,
 				900C0E01225BEA000027BBF9 /* Controllers */,
 				900C0E06225BEA630027BBF9 /* Utilities */,
@@ -130,6 +137,16 @@
 				900C0DF1225BE91A0027BBF9 /* ImageHelper.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		90BACFFD225E875E00587F57 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				90BAD000225E87BA00587F57 /* CelestialBody.swift */,
+				90BAD001225E87BA00587F57 /* PlanetaryBody.swift */,
+				90BACFFF225E87BA00587F57 /* Planet.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,9 +224,12 @@
 			files = (
 				900C0DF0225BE90C0027BBF9 /* NewsAPIClient.swift in Sources */,
 				900C0DF4225BE9270027BBF9 /* PlanetsInfo.swift in Sources */,
+				90BAD003225E87BA00587F57 /* CelestialBody.swift in Sources */,
 				900C0DF8225BE9780027BBF9 /* ContainerViewController.swift in Sources */,
+				90BAD004225E87BA00587F57 /* PlanetaryBody.swift in Sources */,
 				900C0E05225BEA560027BBF9 /* Protocols.swift in Sources */,
 				900A58C22257F01100C2C626 /* SolarViewController.swift in Sources */,
+				90BAD002225E87BA00587F57 /* Planet.swift in Sources */,
 				900C0E00225BE9E90027BBF9 /* NewsViewController.swift in Sources */,
 				900A58BE2257F01100C2C626 /* AppDelegate.swift in Sources */,
 				900C0DF6225BE9300027BBF9 /* NewsInfo.swift in Sources */,
