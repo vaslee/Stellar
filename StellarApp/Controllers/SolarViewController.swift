@@ -1,75 +1,82 @@
-//
-//  ViewController.swift
-//  StellarApp
-//
-//  Created by TingxinLi on 4/5/19.
-//  Copyright © 2019 TingxinLi. All rights reserved.
-//
-
 import UIKit
 import SceneKit
 import ARKit
 
 class SolarViewController: UIViewController, ARSCNViewDelegate {
-
-    @IBOutlet var sceneView: ARSCNView!
+    
+    @IBOutlet weak var sceneView: ARSCNView!
+    
+    let sun = SCNSphere(radius: 0.5)
+    let meterial = SCNMaterial()
+    let sunNode = SCNNode()
+    
+    private var planetObjects = [Planet]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the view's delegate
         sceneView.delegate = self
         
-        // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        setUpSun()
         
-        // Set the scene to the view
-        sceneView.scene = scene
+        planetObjects = Planet.loadPlanets
+        
+        planetObjects.forEach { sceneView.scene.rootNode.addChildNode($0.planetNode) }
+
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        sceneView.addGestureRecognizer(tapGestureRecognizer)
+        
+       // let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
+    }
+    
+    @objc func tapped(sender: UITapGestureRecognizer) {
+        let tappedView = sender.view as!SCNView
+        let touchLocation = sender.location(in: tappedView)
+        let hitTest = tappedView.hitTest(touchLocation, options: nil)
+        if !hitTest.isEmpty {
+            self.present(MenuViewController(), animated: true, completion: nil)
+        }
+    }
+    
+    @objc func pinch(pinch: UIPinchGestureRecognizer) {
+        
+        let pinchView = pinch.view as! SCNView
+        
+        
+        sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in // only zooming to big
+            if node.name == "mercury" {
+                print("node: \(node) stop: \(stop)")
+                node.scale.x = 2.0//newScale
+                node.scale.y = 2.0//newScale
+                node.scale.z = 2.0//newScale
+            }
+        }
+    }
+    
+    func setUpSun() {
+        
+        meterial.diffuse.contents = UIImage(named: "art.scnassets/sun.jpg")
+        sun.materials = [meterial]
+        sunNode.position = SCNVector3(x: 0, y: -1, z: 0)
+        sunNode.geometry = sun
+        sceneView.scene.rootNode.addChildNode(sunNode)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
 
-        // Run the view's session
         sceneView.session.run(configuration)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // Pause the view's session
         sceneView.session.pause()
     }
 
-    // MARK: - ARSCNViewDelegate
     
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
-    
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
-    }
-    
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
-    }
 }

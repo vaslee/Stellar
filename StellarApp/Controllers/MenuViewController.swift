@@ -1,17 +1,10 @@
-//
-//  MenuViewController.swift
-//  StellarApp
-//
-//  Created by TingxinLi on 4/8/19.
-//  Copyright © 2019 TingxinLi. All rights reserved.
-//
-
 import UIKit
 
 class MenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .blue
 
         // Do any additional setup after loading the view.
     }

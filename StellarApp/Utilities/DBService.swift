@@ -1,11 +1,3 @@
-//
-//  DBService.swift
-//  StellarApp
-//
-//  Created by Diego Estrella III on 4/10/19.
-//  Copyright © 2019 TingxinLi. All rights reserved.
-//
-
 import Foundation
 
 struct PlanetCollectionKeys {
