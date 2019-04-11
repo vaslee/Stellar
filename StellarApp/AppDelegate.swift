@@ -16,6 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let SMVC = SolarViewController()
+        let NVC = NewsViewController()
+        let tab = UITabBarController()
+        let nav = UINavigationController.init(rootViewController: SMVC)
+        let nav1 = UINavigationController.init(rootViewController: NVC)
+        nav.tabBarItem = UITabBarItem(title: "Solar System", image: UIImage.init(named: "icons8-planet-25"), selectedImage: UIImage.init(named: "icons8-planet-25"))
+        nav1.tabBarItem = UITabBarItem(title: "News", image: UIImage.init(named: "icons8-news-25"), selectedImage: UIImage.init(named: "icons8-news-25"))
+        tab.viewControllers = [nav, nav1]
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = tab
+        window?.makeKeyAndVisible()
         return true
     }
 
