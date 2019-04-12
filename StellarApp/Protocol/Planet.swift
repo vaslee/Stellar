@@ -30,11 +30,7 @@ struct Sun {
     
 }
 struct Planet {
-    
-<<<<<<< HEAD
 
-=======
->>>>>>> 89228002006c778040676b8e4859095304522289
     static var planetNodes = [SCNNode]()
     
     static func getPlanets() -> [SCNNode] {
