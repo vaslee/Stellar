@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+class SolarViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
     
@@ -40,7 +40,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let touchLocation = sender.location(in: tappedView)
         let hitTest = tappedView.hitTest(touchLocation, options: nil)
         if !hitTest.isEmpty {
-            print("yes")
+           self.present(MenuViewController(), animated: true, completion: nil)
         }
     }
     

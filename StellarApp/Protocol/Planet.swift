@@ -78,7 +78,7 @@ struct Planet {
             case .saturn:
                 let orbitNode = SCNNode.getRing(radius: 8, vector: (x: 0, y: 0, z: 0), color: .yellow)
                 let planetNode = SCNNode.getNode(name: "saturn", image: UIImage(named: "art.scnassets/saturn.jpg")!, radius: 0.7, vector: (x: 8, y: 0, z: 0), moveSpeed: 0.7, rotation: 0.2)
-                let saturnOrbitNode = SCNNode.getSaturnRing(radius: 0.9, vector: (x: 0, y: 0, z: 0), texture: UIImage(named: "art.scnassets/saturnRing.jpg")!)
+                let saturnOrbitNode = SCNNode.getSaturnRing(radius: 0.9, vector: (x: 0, y: 0, z: 0), texture: UIImage(named: "art.scnassets/saturnRing.png")!)
                 orbitNode.addChildNode(planetNode)
                 planetNode.addChildNode(saturnOrbitNode)
                 orbitNode.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 0.7, z: 0, duration: 1)))
