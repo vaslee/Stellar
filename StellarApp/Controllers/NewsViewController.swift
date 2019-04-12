@@ -9,7 +9,6 @@ class NewsViewController: UIViewController {
         view.addSubview(newsView)
         newsView.NewsCollectionView.delegate = self
         newsView.NewsCollectionView.dataSource = self
-        newsView.backgroundColor = .orange
         // Do any additional setup after loading the view.
     }
     

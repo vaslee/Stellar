@@ -16,7 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let SMVC = SolarViewController()
+        //let SMVC = SolarViewController() // TODO: storyboard instance
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let SMVC = storyboard.instantiateViewController(withIdentifier: "SolarViewController") as! SolarViewController
+        
         let NVC = NewsViewController()
         let tab = UITabBarController()
         let nav = UINavigationController.init(rootViewController: SMVC)

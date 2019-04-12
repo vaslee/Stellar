@@ -15,7 +15,7 @@ class NewsView: UIView {
         layout.scrollDirection = .vertical
         let ncv = UICollectionView.init(frame: self.bounds, collectionViewLayout: layout)
         ncv.register(NewsCollectionViewCell.self, forCellWithReuseIdentifier: "NewsCell")
-        ncv.backgroundColor = .white
+        ncv.backgroundColor = .blue
         return ncv
         
     }()
