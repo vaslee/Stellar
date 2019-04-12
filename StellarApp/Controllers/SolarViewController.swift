@@ -39,7 +39,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         let touchLocation = sender.location(in: tappedView)
         let hitTest = tappedView.hitTest(touchLocation, options: nil)
         if !hitTest.isEmpty {
-            self.present(MenuViewController(), animated: true, completion: nil)
+            self.present(SolarDetailViewController(), animated: true, completion: nil)
 
         }
     }
