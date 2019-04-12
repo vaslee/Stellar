@@ -12,11 +12,8 @@
     <scenes>
         <!--SolarViewController-->
         <scene sceneID="tXr-a1-R10">
-
+            <objects>
                 <viewController storyboardIdentifier="SolarViewController" title="SolarViewController" id="BV1-FR-VrT" customClass="SolarViewController" customModule="StellarApp" customModuleProvider="target" sceneMemberID="viewController">
-
-                <viewController id="BV1-FR-VrT" customClass="SolarViewController" customModule="StellarApp" customModuleProvider="target" sceneMemberID="viewController">
-
                     <view key="view" contentMode="scaleToFill" id="U0K-SW-4ec">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -35,7 +32,7 @@
                         <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
                     </view>
                     <connections>
-                        <outlet property="sceneView" destination="BrB-h1-WRS" id="9gB-oD-T0O"/>
+                        <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
