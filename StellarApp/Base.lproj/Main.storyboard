@@ -10,10 +10,13 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Solar View Controller-->
+        <!--SolarViewController-->
         <scene sceneID="tXr-a1-R10">
-            <objects>
+
+                <viewController storyboardIdentifier="SolarViewController" title="SolarViewController" id="BV1-FR-VrT" customClass="SolarViewController" customModule="StellarApp" customModuleProvider="target" sceneMemberID="viewController">
+
                 <viewController id="BV1-FR-VrT" customClass="SolarViewController" customModule="StellarApp" customModuleProvider="target" sceneMemberID="viewController">
+
                     <view key="view" contentMode="scaleToFill" id="U0K-SW-4ec">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
