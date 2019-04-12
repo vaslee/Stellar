@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
 		09FC1CDF225FC3FE00CEAAED /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC1CDE225FC3FE00CEAAED /* AppError.swift */; };
 		09FC1CE1225FC48500CEAAED /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC1CE0225FC48500CEAAED /* NetworkHelper.swift */; };
+
+
+	
 		2B6254D9225FA55800704ED4 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6254D8225FA55800704ED4 /* NewsView.swift */; };
 		2B6254DC225FA65C00704ED4 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6254DB225FA65C00704ED4 /* NewsCollectionViewCell.swift */; };
 		6295AE3C225E3A6C007118E3 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6295AE3B225E3A6C007118E3 /* DBService.swift */; };
@@ -29,7 +33,9 @@
 		900C0DFE225BE9DE0027BBF9 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C0DFD225BE9DE0027BBF9 /* SideMenuViewController.swift */; };
 		900C0E00225BE9E90027BBF9 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C0DFF225BE9E90027BBF9 /* NewsViewController.swift */; };
 		900C0E05225BEA560027BBF9 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C0E04225BEA560027BBF9 /* Protocols.swift */; };
+
 		9033D9402260DB8B000ACA50 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9033D93F2260DB8B000ACA50 /* MenuView.swift */; };
+
 		90BAD002225E87BA00587F57 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BACFFF225E87BA00587F57 /* Planet.swift */; };
 		90BAD003225E87BA00587F57 /* CelestialBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BAD000225E87BA00587F57 /* CelestialBody.swift */; };
 		90BAD004225E87BA00587F57 /* PlanetaryBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BAD001225E87BA00587F57 /* PlanetaryBody.swift */; };
@@ -38,6 +44,9 @@
 /* Begin PBXFileReference section */
 		09FC1CDE225FC3FE00CEAAED /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		09FC1CE0225FC48500CEAAED /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+
+
+
 		2B6254D8225FA55800704ED4 /* NewsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsView.swift; path = ../NewsView.swift; sourceTree = "<group>"; };
 		2B6254DB225FA65C00704ED4 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		6295AE3B225E3A6C007118E3 /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
@@ -60,7 +69,9 @@
 		900C0DFD225BE9DE0027BBF9 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		900C0DFF225BE9E90027BBF9 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		900C0E04225BEA560027BBF9 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+
 		9033D93F2260DB8B000ACA50 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+
 		90BACFFF225E87BA00587F57 /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		90BAD000225E87BA00587F57 /* CelestialBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelestialBody.swift; sourceTree = "<group>"; };
 		90BAD001225E87BA00587F57 /* PlanetaryBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetaryBody.swift; sourceTree = "<group>"; };
@@ -254,11 +265,16 @@
 				900C0DF4225BE9270027BBF9 /* PlanetsInfo.swift in Sources */,
 				90BAD003225E87BA00587F57 /* CelestialBody.swift in Sources */,
 				2B6254D9225FA55800704ED4 /* NewsView.swift in Sources */,
+
 				9033D9402260DB8B000ACA50 /* MenuView.swift in Sources */,
 				90BAD003225E87BA00587F57 /* CelestialBody.swift in Sources */,
+
 				2B6254D9225FA55800704ED4 /* NewsView.swift in Sources */,
+
 				900C0DF8225BE9780027BBF9 /* ContainerViewController.swift in Sources */,
 				09FC1CDF225FC3FE00CEAAED /* AppError.swift in Sources */,
+
+
 				90BAD004225E87BA00587F57 /* PlanetaryBody.swift in Sources */,
 				900C0E05225BEA560027BBF9 /* Protocols.swift in Sources */,
 				900A58C22257F01100C2C626 /* SolarViewController.swift in Sources */,
@@ -420,6 +436,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YTJZLJSH82;
+
+
+
+
+
+
+
 				INFOPLIST_FILE = StellarApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -440,6 +463,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YTJZLJSH82;
+
+
 				INFOPLIST_FILE = StellarApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
