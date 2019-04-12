@@ -14,9 +14,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
     
-    let sun = SCNSphere(radius: 0.5)
-    let meterial = SCNMaterial()
-    let sunNode = SCNNode()
+    let sunNode = Sun.getSunNode()
     
     
     override func viewDidLoad() {
@@ -26,9 +24,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.showsStatistics = true
         
-        setUpSun()
+        sceneView.scene.rootNode.addChildNode(sunNode)
+        Planet.getPlanets().forEach { sunNode.addChildNode($0) }
         
-        Planet.getPlanets().forEach { sceneView.scene.rootNode.addChildNode($0) }
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
         let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
@@ -48,28 +46,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @objc func pinch(pinch: UIPinchGestureRecognizer) {
         
-        for planet in Planet.getPlanets() {
-            if planet.name == Planet.planetNodes.first?.name {
-                
-                planet.enumerateChildNodes { (node, stop) in
-                    print("node: \(node.name ?? "no name")")
-                    if node.name == "jupiter" {
-                        node.scale.x = 5.0//newScale
-                        node.scale.y = 5.0//newScale
-                        node.scale.z = 5.0
-                    }
-                }
-            }
+        let pinchView = pinch.view as! SCNView
+        let pinchLocation = pinch.location(in: pinchView)
+        let hitTest = pinchView.hitTest(pinchLocation, options: nil)
+        if !hitTest.isEmpty {
+            let scaleAction = SCNAction.scale(by: pinch.scale, duration: 0)
+            SCNNode.deepScaleNode(node: sunNode, scaleAction: scaleAction)
+            pinch.scale = 1.0
         }
-    }
-    
-    func setUpSun() {
-        
-        meterial.diffuse.contents = UIImage(named: "art.scnassets/sun.jpg")
-        sun.materials = [meterial]
-        sunNode.position = SCNVector3(x: 0, y: -1, z: 0)
-        sunNode.geometry = sun
-        sceneView.scene.rootNode.addChildNode(sunNode)
         
     }
     
