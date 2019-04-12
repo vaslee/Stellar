@@ -8,6 +8,7 @@
 
 import UIKit
 import ARKit
+
 enum PlanetType: CaseIterable{
     
     case mercury
@@ -139,6 +140,7 @@ extension SCNNode {
         node.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: rotation, z: 0, duration: 1)))
         
         return node
+
     }
     
     static func getRing(radius: CGFloat,
@@ -172,4 +174,5 @@ extension SCNNode {
         
         return ringNode
     }
+
 }
