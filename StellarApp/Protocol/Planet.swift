@@ -30,7 +30,6 @@ struct Sun {
     
 }
 struct Planet {
-    
     static var planetNodes = [SCNNode]()
     
     static func getPlanets() -> [SCNNode] {
