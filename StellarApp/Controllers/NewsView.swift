@@ -15,7 +15,6 @@ class NewsView: UIView {
         layout.scrollDirection = .vertical
         let ncv = UICollectionView.init(frame: self.bounds, collectionViewLayout: layout)
         ncv.register(NewsCollectionViewCell.self, forCellWithReuseIdentifier: "NewsCell")
-        ncv.backgroundColor = .blue
         return ncv
         
     }()
@@ -32,11 +31,13 @@ class NewsView: UIView {
     }
     
     private func commonInit() {
+    
         setConstraints()
     }
     
     func setConstraints() {
         self.addSubview(NewsCollectionView)
+        NewsCollectionView.backgroundColor = .clear
         NewsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NewsCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 11).isActive = true
         NewsCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true

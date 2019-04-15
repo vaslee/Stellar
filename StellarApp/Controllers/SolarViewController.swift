@@ -4,13 +4,13 @@ import ARKit
 
 class SolarViewController: UIViewController, ARSCNViewDelegate {
     
-    @IBOutlet weak var sceneView: ARSCNView!
+
+    @IBOutlet var sceneView: ARSCNView!
+
+  
     
-    let sun = SCNSphere(radius: 0.5)
-    let meterial = SCNMaterial()
-    let sunNode = SCNNode()
+    let sunNode = Sun.getSunNode()
     
-    private var planetObjects = [Planet]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,16 +19,17 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.showsStatistics = true
         
-        setUpSun()
-        
-        planetObjects = Planet.loadPlanets
-        
-        planetObjects.forEach { sceneView.scene.rootNode.addChildNode($0.planetNode) }
 
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
-        sceneView.addGestureRecognizer(tapGestureRecognizer)
+        sceneView.scene.rootNode.addChildNode(sunNode)
+        Planet.getPlanets().forEach { sunNode.addChildNode($0) }
         
-       // let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
+        sceneView.addGestureRecognizer(tapGestureRecognizer)
+        sceneView.addGestureRecognizer(pinchGestureRecognizer)
+        
+
     }
     
     @objc func tapped(sender: UITapGestureRecognizer) {
@@ -36,34 +37,26 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         let touchLocation = sender.location(in: tappedView)
         let hitTest = tappedView.hitTest(touchLocation, options: nil)
         if !hitTest.isEmpty {
-            self.present(MenuViewController(), animated: true, completion: nil)
+
+           self.present(MenuViewController(), animated: true, completion: nil)
+
         }
     }
     
     @objc func pinch(pinch: UIPinchGestureRecognizer) {
         
         let pinchView = pinch.view as! SCNView
-        
-        
-        sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in // only zooming to big
-            if node.name == "mercury" {
-                print("node: \(node) stop: \(stop)")
-                node.scale.x = 2.0//newScale
-                node.scale.y = 2.0//newScale
-                node.scale.z = 2.0//newScale
-            }
+
+        let pinchLocation = pinch.location(in: pinchView)
+        let hitTest = pinchView.hitTest(pinchLocation, options: nil)
+        if !hitTest.isEmpty {
+            let scaleAction = SCNAction.scale(by: pinch.scale, duration: 0)
+            SCNNode.deepScaleNode(node: sunNode, scaleAction: scaleAction)
+            pinch.scale = 1.0
         }
     }
     
-    func setUpSun() {
-        
-        meterial.diffuse.contents = UIImage(named: "art.scnassets/sun.jpg")
-        sun.materials = [meterial]
-        sunNode.position = SCNVector3(x: 0, y: -1, z: 0)
-        sunNode.geometry = sun
-        sceneView.scene.rootNode.addChildNode(sunNode)
-        
-    }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -78,5 +71,4 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
 
-    
 }

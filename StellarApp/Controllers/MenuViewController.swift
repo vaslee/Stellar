@@ -2,22 +2,19 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
+    let menuView = MenuView()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
 
-        // Do any additional setup after loading the view.
+        view.backgroundColor = #colorLiteral(red: 0.4620226622, green: 0.8382837176, blue: 1, alpha: 1)
+        view.addSubview(menuView)
+        
+        menuView.exitButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func buttonAction() {
+        dismiss(animated: true, completion: nil)
     }
-    */
 
 }
