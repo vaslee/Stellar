@@ -13,6 +13,7 @@
 		2B6254DC225FA65C00704ED4 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6254DB225FA65C00704ED4 /* NewsCollectionViewCell.swift */; };
 		6295AE3C225E3A6C007118E3 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6295AE3B225E3A6C007118E3 /* DBService.swift */; };
 		6295AE3E2260FC7B007118E3 /* SolarDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6295AE3D2260FC7B007118E3 /* SolarDetailView.swift */; };
+		90030235226780C900318A7E /* PlanetsWithAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90030234226780C900318A7E /* PlanetsWithAction.swift */; };
 		900A58BE2257F01100C2C626 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900A58BD2257F01100C2C626 /* AppDelegate.swift */; };
 		900A58C02257F01100C2C626 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 900A58BF2257F01100C2C626 /* art.scnassets */; };
 		900A58C22257F01100C2C626 /* SolarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900A58C12257F01100C2C626 /* SolarViewController.swift */; };
@@ -43,6 +44,7 @@
 		2B6254DB225FA65C00704ED4 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		6295AE3B225E3A6C007118E3 /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
 		6295AE3D2260FC7B007118E3 /* SolarDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarDetailView.swift; sourceTree = "<group>"; };
+		90030234226780C900318A7E /* PlanetsWithAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsWithAction.swift; sourceTree = "<group>"; };
 		900A58BA2257F01100C2C626 /* StellarApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StellarApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		900A58BD2257F01100C2C626 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		900A58BF2257F01100C2C626 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				90BAD000225E87BA00587F57 /* CelestialBody.swift */,
 				90BAD001225E87BA00587F57 /* PlanetaryBody.swift */,
 				90BACFFF225E87BA00587F57 /* Planet.swift */,
+				90030234226780C900318A7E /* PlanetsWithAction.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				900C0DF4225BE9270027BBF9 /* PlanetsInfo.swift in Sources */,
 				90BAD003225E87BA00587F57 /* CelestialBody.swift in Sources */,
 				2B6254D9225FA55800704ED4 /* NewsView.swift in Sources */,
+				90030235226780C900318A7E /* PlanetsWithAction.swift in Sources */,
 				9033D9402260DB8B000ACA50 /* MenuView.swift in Sources */,
 				90BAD003225E87BA00587F57 /* CelestialBody.swift in Sources */,
 				2B6254D9225FA55800704ED4 /* NewsView.swift in Sources */,
@@ -423,7 +427,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YTJZLJSH82;
+				DEVELOPMENT_TEAM = RJ364J35FH;
 				INFOPLIST_FILE = StellarApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -443,7 +447,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YTJZLJSH82;
+				DEVELOPMENT_TEAM = RJ364J35FH;
 				INFOPLIST_FILE = StellarApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

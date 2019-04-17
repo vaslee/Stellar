@@ -2,15 +2,20 @@ import UIKit
 import SceneKit
 import ARKit
 
+
+enum PlayAnimation {
+    case regular
+    case animation
+}
+
+
 class SolarViewController: UIViewController, ARSCNViewDelegate {
     
-
-
+    @IBOutlet weak var mySwitch: UISwitch!
     @IBOutlet var sceneView: ARSCNView!
 
-  
 
-    
+    var playAnimation: PlayAnimation = .animation
     let sunNode = Sun.getSunNode()
     
     
@@ -20,19 +25,56 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         sceneView.delegate = self
         
         sceneView.showsStatistics = true
-
+        
         sceneView.scene.rootNode.addChildNode(sunNode)
-        Planet.getPlanets().forEach { sunNode.addChildNode($0) }
         
+        PlanetsAction.getPlanets().forEach { sunNode.addChildNode($0) }
         
-        
-
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
-        let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
-        sceneView.addGestureRecognizer(tapGestureRecognizer)
-        sceneView.addGestureRecognizer(pinchGestureRecognizer)
 
     }
+    
+    @IBAction func switchAction(_ sender: UISwitch) {
+        if playAnimation == .regular {
+            playAnimation = .animation
+        } else {
+            playAnimation = .regular
+        }
+        
+        switch playAnimation {
+        case .regular:
+            
+            sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
+                node.removeFromParentNode()
+            }
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
+            let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
+            let rotateGestureRecognizer = UIRotationGestureRecognizer(target: self, action: #selector(rotate))
+            sceneView.addGestureRecognizer(tapGestureRecognizer)
+            sceneView.addGestureRecognizer(pinchGestureRecognizer)
+            sceneView.addGestureRecognizer(rotateGestureRecognizer)
+            
+            sceneView.scene.rootNode.addChildNode(sunNode)
+            Planet.getPlanets().forEach { sunNode.addChildNode($0) }
+            sceneView.isUserInteractionEnabled = true
+            
+        case .animation:
+            sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
+                node.removeFromParentNode()
+            }
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
+            let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
+            let rotateGestureRecognizer = UIRotationGestureRecognizer(target: self, action: #selector(rotate))
+            sceneView.removeGestureRecognizer(tapGestureRecognizer)
+            sceneView.removeGestureRecognizer(pinchGestureRecognizer)
+            sceneView.removeGestureRecognizer(rotateGestureRecognizer)
+            
+            sceneView.scene.rootNode.addChildNode(sunNode)
+            PlanetsAction.getPlanets().forEach { sunNode.addChildNode($0) }
+            sceneView.isUserInteractionEnabled = false
+            
+        }
+    }
+    
     
     @objc func tapped(sender: UITapGestureRecognizer) {
         let tappedView = sender.view as!SCNView
@@ -59,6 +101,18 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    @objc func rotate(rotate: UIRotationGestureRecognizer) {
+       
+        let rotateView = rotate.view as! SCNView
+        let rotateLocation = rotate.location(in: rotateView)
+        let hitTest = rotateView.hitTest(rotateLocation, options: nil)
+        if !hitTest.isEmpty {
+            let rotateAction = SCNAction.rotateBy(x: 1, y: 1, z: 0, duration: 0.1)
+            SCNNode.deepScaleNode(node: sunNode, scaleAction: rotateAction)
+            rotate.rotation = 0
+        }
+        
+    }
 
     
     override func viewWillAppear(_ animated: Bool) {
