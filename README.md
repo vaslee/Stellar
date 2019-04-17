@@ -30,8 +30,7 @@ For our app Stellar, users will be able to use AR (augmented reality) to learn a
 ## Bonus
 * Multi-Language
 * Speech of English Language
-* Able to save the user record. So in this case, its able to save more than one players.
-* Search for the nearby players, and connect by internet to play together
+
 
 ## Group Members
 * [Matthew Huie](https://github.com/MattHuie)
