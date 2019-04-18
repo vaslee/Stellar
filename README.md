@@ -3,9 +3,11 @@
 For our app Stellar, users will be able to use AR (augmented reality) to learn and get knowledge about the Galaxy World. Especially for the people who are studying science. Our app will be different from other apps that exist in the market. For example, in our Stellar app, the user will be able to select different languages of the planet's information. Also, we are providing with the speech for the English language; therefore, for those young kids who do not have much vocabulary, they will be able to understand each planet.
 
 ## App Overview
-<img width="818" alt="Screen Shot 2019-04-04 at 11 22 41 AM" src="https://user-images.githubusercontent.com/43765300/55567607-0218af00-56cc-11e9-86bd-00403513e44c.png">
+![WechatIMG7353](https://user-images.githubusercontent.com/43765300/56370318-fe575300-61c8-11e9-949d-42de534e4e14.png)
+![WechatIMG7354](https://user-images.githubusercontent.com/43765300/56370319-fe575300-61c8-11e9-93e1-cf92ffa735be.png)
+![WechatIMG7355](https://user-images.githubusercontent.com/43765300/56370320-fe575300-61c8-11e9-8c6a-d041737323ae.png)
+![WechatIMG7357](https://user-images.githubusercontent.com/43765300/56370321-fe575300-61c8-11e9-9ab7-a6a5b9c931a7.png)
 
-![Apr-04-2019 11-22-00](https://user-images.githubusercontent.com/43765300/55567616-047b0900-56cc-11e9-96a7-26b5fb97911d.gif)
 
 ## Stellar MVP Checklist Requirements
 
