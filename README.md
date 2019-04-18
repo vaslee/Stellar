@@ -9,13 +9,13 @@ For our app Stellar, users will be able to use AR (augmented reality) to learn a
 
 ## Stellar MVP Checklist Requirements
 
-- [ ] User can view solar system in AR
+- [x] User can view solar system in AR
 - [ ] User can manipulate solar system 
 - [ ] User can click on planet or moon and get information about the selected icon
 - [ ] User can click on anywhere on the screen to dismiss the planet’s info screen
 - [ ] User change background to real world or default 
 - [ ] User can tap on a side menu and see live news from NASA and see settings
-- [ ] User can able to pinch to zoom/enlarge the planet to see more detail on it
+- [x] User can able to pinch to zoom/enlarge the planet to see more detail on it
 
 ## Built With
 * SceneKit
