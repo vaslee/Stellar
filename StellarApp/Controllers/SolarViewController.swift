@@ -7,12 +7,10 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
 
 
     @IBOutlet var sceneView: ARSCNView!
-
-  
-
     
-    let sunNode = Sun.getSunNode()
+    let centerNode = CenterNode.getCenterNode()
     
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +19,10 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.showsStatistics = true
 
-        sceneView.scene.rootNode.addChildNode(sunNode)
-        Planet.getPlanets().forEach { sunNode.addChildNode($0) }
+        sceneView.scene.rootNode.addChildNode(centerNode)
+        Planet.getPlanets().forEach { centerNode.addChildNode($0) }
         
-        
-        
-
+    
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
         let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
         sceneView.addGestureRecognizer(tapGestureRecognizer)
@@ -44,22 +40,17 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-
-    
     @objc func pinch(pinch: UIPinchGestureRecognizer) {
         
         let pinchView = pinch.view as! SCNView
-
         let pinchLocation = pinch.location(in: pinchView)
         let hitTest = pinchView.hitTest(pinchLocation, options: nil)
         if !hitTest.isEmpty {
-            let scaleAction = SCNAction.scale(by: pinch.scale, duration: 0)
-            SCNNode.deepScaleNode(node: sunNode, scaleAction: scaleAction)
+//            let scaleAction = SCNAction.scale(by: pinch.scale, duration: 0)
+            SCNNode.deepScaleNode(node: centerNode, scale: pinch.scale)
             pinch.scale = 1.0
         }
     }
-    
-
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
