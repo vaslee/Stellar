@@ -10,7 +10,7 @@ import UIKit
 
 class NewsView: UIView {
 
-    lazy var NewsCollectionView: UICollectionView = {
+    lazy var newsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let ncv = UICollectionView.init(frame: self.bounds, collectionViewLayout: layout)
@@ -36,13 +36,13 @@ class NewsView: UIView {
     }
     
     func setConstraints() {
-        self.addSubview(NewsCollectionView)
-        NewsCollectionView.backgroundColor = .clear
-        NewsCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        NewsCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 11).isActive = true
-        NewsCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
-        NewsCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
-        NewsCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -11).isActive = true
+        self.addSubview(newsCollectionView)
+        newsCollectionView.backgroundColor = .clear
+        newsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        newsCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 11).isActive = true
+        newsCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
+        newsCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
+        newsCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -11).isActive = true
     }
     
 }
