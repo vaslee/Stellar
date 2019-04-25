@@ -96,7 +96,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
     }
     
     
-    
+
     @objc func portalSwitch() {
         
         if portalChange == .galaxy {
