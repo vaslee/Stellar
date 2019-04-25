@@ -29,7 +29,6 @@ func createBox(isDoor : Bool) -> SCNNode {
     // add masked box
     let maskedBox = SCNBox(width: width, height: height, length: isDoor ? doorLength : length, chamferRadius: 0)
     maskedBox.firstMaterial?.diffuse.contents = UIColor.white
-   // maskedBox.firstMaterial?.diffuse.contents = UIImage(named: "art.scnassets/star.jpg")
 
     maskedBox.firstMaterial?.transparency = 0.00001
     

@@ -165,13 +165,6 @@ extension SCNNode {
         }
     }
     
-//    static func deepApply(_ node: SCNNode, action: (SCNNode) -> Void) {
-//        action(node)
-//        for child in node.childNodes {
-//            deepApply(child, action: action)
-//        }
-//    }
-    
     
     
     static func getNode(name: String, image: UIImage,
