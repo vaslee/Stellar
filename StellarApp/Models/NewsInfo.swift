@@ -16,6 +16,6 @@ struct ArticleWrapper: Codable {
     let content: String?
 }
 
-struct SourceWrapper : Codable {
+struct SourceWrapper: Codable {
     let name: String
 }
