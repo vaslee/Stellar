@@ -2,10 +2,12 @@ import UIKit
 import SceneKit
 import ARKit
 
+
 enum PlayAnimation {
     case regular
     case animation
 }
+
 
 enum PortalChange {
     case reality
@@ -21,8 +23,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
     let centerNode = CenterNode.getCenterNode()
     var playAnimation: PlayAnimation = .animation
     var portalChange: PortalChange = .reality
-   
-    
+
     let solarView = SolarView()
     
     override func viewDidLoad() {
@@ -31,11 +32,11 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         sceneView.delegate = self
         
         sceneView.showsStatistics = true
+      
         
         view.addSubview(solarView)
         
 
-        
         sceneView.scene.rootNode.addChildNode(centerNode)
         Planet.getPlanets().forEach { centerNode.addChildNode($0) }
         
@@ -63,17 +64,19 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
             playAnimation = .regular
         }
         
-        
+
         switch playAnimation {
         case .regular:
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
             let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
     
+
             sceneView.addGestureRecognizer(tapGestureRecognizer)
             sceneView.addGestureRecognizer(pinchGestureRecognizer)
             sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
                 node.removeFromParentNode()
             }
+
             sceneView.scene.rootNode.addChildNode(centerNode)
             Planet.getPlanets().forEach { centerNode.addChildNode($0) }
             sceneView.isUserInteractionEnabled = true
@@ -95,6 +98,9 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    
+
+      
     
 
     @objc func portalSwitch() {
@@ -236,7 +242,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         
         
         self.sceneView.scene.rootNode.addChildNode(node)
-       
+
     }
     
 }
