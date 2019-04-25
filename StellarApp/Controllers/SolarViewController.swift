@@ -59,10 +59,10 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         
         let configuration = ARWorldTrackingConfiguration()
 

@@ -19,7 +19,7 @@ class NewsView: UIView {
         
     }()
     
-    
+
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         commonInit()
@@ -31,7 +31,6 @@ class NewsView: UIView {
     }
     
     private func commonInit() {
-    
         setConstraints()
     }
     

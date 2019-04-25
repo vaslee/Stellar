@@ -18,18 +18,19 @@ class NewsCollectionViewCell: UICollectionViewCell {
     
     public lazy var articleLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = true
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 11.5)
         label.adjustsFontForContentSizeCategory = true
         label.textColor = .black
+        label.textAlignment = .left
         return label
     }()
     
     public lazy var articleDescription: UILabel = {
         let description = UILabel()
         description.numberOfLines = 0
-        description.minimumScaleFactor = 0.50
-        description.font = UIFont.boldSystemFont(ofSize: 20)
+        description.font = UIFont.boldSystemFont(ofSize: 16.0)
         description.textColor = .black
         description.backgroundColor = .clear
         return description
@@ -50,26 +51,25 @@ class NewsCollectionViewCell: UICollectionViewCell {
     private func setupSolarImage() {
         addSubview(articleImage)
         articleImage.translatesAutoresizingMaskIntoConstraints = false
-        articleImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
-        articleImage.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.0).isActive = true
+        articleImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
+        articleImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        articleImage.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
         articleImage.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100).isActive = true
-    }
+  }
     
     private func setupLabel() {
         addSubview(articleLabel)
         articleLabel.translatesAutoresizingMaskIntoConstraints = false
         articleLabel.topAnchor.constraint(equalTo: articleImage.bottomAnchor, constant: 2).isActive = true
-        articleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 9).isActive = true
-        articleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -9).isActive = true
+        articleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 10).isActive = true
+        articleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
     }
     
     private func setupDescription() {
         addSubview(articleDescription)
         articleDescription.translatesAutoresizingMaskIntoConstraints = false
-        articleDescription.topAnchor.constraint(equalTo: articleLabel.bottomAnchor, constant: 2).isActive = true
-        articleDescription.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 9).isActive = true
-        articleDescription.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -9).isActive = true
-        articleDescription.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
+        articleDescription.topAnchor.constraint(equalTo: articleLabel.bottomAnchor, constant: 4).isActive = true
+        articleDescription.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        articleDescription.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
     }
-
 }
