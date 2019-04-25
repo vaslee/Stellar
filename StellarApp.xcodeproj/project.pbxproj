@@ -58,6 +58,7 @@
 
 		6295AE3D2260FC7B007118E3 /* SolarDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarDetailView.swift; sourceTree = "<group>"; };
 
+
 		900A58BA2257F01100C2C626 /* StellarApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StellarApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		900A58BD2257F01100C2C626 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		900A58BF2257F01100C2C626 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -196,8 +197,10 @@
 				90BAD000225E87BA00587F57 /* CelestialBody.swift */,
 				90BAD001225E87BA00587F57 /* PlanetaryBody.swift */,
 				90BACFFF225E87BA00587F57 /* Planet.swift */,
+
 				90F37BD422695C0400645186 /* PlanetsMoved.swift */,
 				90066944226E0C8600CC1770 /* Extension-Indoor.swift */,
+
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				90BAD003225E87BA00587F57 /* CelestialBody.swift in Sources */,
 				90066945226E0C8600CC1770 /* Extension-Indoor.swift in Sources */,
 				2B6254D9225FA55800704ED4 /* NewsView.swift in Sources */,
+				90030235226780C900318A7E /* PlanetsWithAction.swift in Sources */,
 				9033D9402260DB8B000ACA50 /* MenuView.swift in Sources */,
 				2BC11DD7226125D90031D26A /* SecretKeys.swift in Sources */,
 				90BAD003225E87BA00587F57 /* CelestialBody.swift in Sources */,
@@ -298,6 +302,7 @@
 				90F37BD722695CBE00645186 /* SolarView.swift in Sources */,
         
 				6295AE3E2260FC7B007118E3 /* SolarDetailView.swift in Sources */,
+
 
 				09FC1CE1225FC48500CEAAED /* NetworkHelper.swift in Sources */,
 				900A58BE2257F01100C2C626 /* AppDelegate.swift in Sources */,
