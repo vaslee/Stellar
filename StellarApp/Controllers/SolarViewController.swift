@@ -28,7 +28,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         return SolarView()
     }()
 
-    let cubeNode = CubeMapBox(wallHeight: 40, wallThickness: 0.5, wallLength: 40, textures: .spaceTextures)
+    let cubeNode = CubeMapBox(wallHeight: 40, wallThickness: 0.1, wallLength: 40, textures: .spaceTextures)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,10 +111,10 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         
         if portalChange == .galaxy {
             portalChange = .reality
-            //              solarView.mySwitch.isOn = true
+                          solarView.mySwitch.isOn = true
         } else {
             portalChange = .galaxy
-            //             solarView.mySwitch.isOn = false
+                         solarView.mySwitch.isOn = false
         }
         
         switch portalChange {
