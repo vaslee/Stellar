@@ -12,9 +12,7 @@ class SolarView: UIView {
 
     public lazy var playButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "play9"), for: .normal)
-        
-       // button.setTitle("play", for: .normal)
+        button.setImage(UIImage(named: "play9"), for: .normal)        
         button.setTitleColor(.black, for: .normal)
         return button
     }()
@@ -31,7 +29,7 @@ class SolarView: UIView {
     }()
     
     override init(frame: CGRect) {
-        super.init(frame: UIScreen.main.bounds)
+        super.init(frame: .zero)
         updateData()
     }
     
