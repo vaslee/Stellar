@@ -24,34 +24,36 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
     var playAnimation: PlayAnimation = .animation
     var portalChange: PortalChange = .reality
 
-    let solarView = SolarView()
-    
+    lazy var solarView: SolarView = {
+        return SolarView()
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         sceneView.delegate = self
         
         sceneView.showsStatistics = true
-      
+
         
-        view.addSubview(solarView)
-        
+        setUpSolarView()
+
 
         sceneView.scene.rootNode.addChildNode(centerNode)
         Planet.getPlanets().forEach { centerNode.addChildNode($0) }
         
-        Sound.playSound(sound: "background", format: "mp3")
+        //        Sound.playSound(sound: "background", format: "mp3")
 
         solarView.playButton.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
         solarView.mySwitch.addTarget(self, action: #selector(portalSwitch), for: .valueChanged)
-       
+
         
         
-//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
-//        let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
-//
-//        sceneView.addGestureRecognizer(tapGestureRecognizer)
-//        sceneView.addGestureRecognizer(pinchGestureRecognizer)
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapped(sender:)))
+        let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(pinch:)))
+
+        sceneView.addGestureRecognizer(tapGestureRecognizer)
+        sceneView.addGestureRecognizer(pinchGestureRecognizer)
 
     }
     
@@ -69,7 +71,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         case .regular:
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
             let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
-    
+
 
             sceneView.addGestureRecognizer(tapGestureRecognizer)
             sceneView.addGestureRecognizer(pinchGestureRecognizer)
@@ -98,19 +100,24 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-    
+    private func setUpSolarView() {
+        solarView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(solarView)
 
-      
-    
+        NSLayoutConstraint.activate([
+            solarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            solarView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4)
+            ])
+    }
 
     @objc func portalSwitch() {
         
         if portalChange == .galaxy {
             portalChange = .reality
-              solarView.mySwitch.isOn = true
+            //              solarView.mySwitch.isOn = true
         } else {
             portalChange = .galaxy
-             solarView.mySwitch.isOn = false
+            //             solarView.mySwitch.isOn = false
         }
         
         switch portalChange {
@@ -145,9 +152,18 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         let hitTest = tappedView.hitTest(touchLocation, options: nil)
         if !hitTest.isEmpty {
             Sound.playSound(sound: "planetSelect", format: "wav")
-            self.present(SolarDetailViewController(), animated: true, completion: nil)
-            
+            planetTapped()
         }
+    }
+
+    private func planetTapped() {
+        let vc = SolarDetailViewController()
+        vc.view.backgroundColor = UIColor.init(white: 0.2, alpha: 0.5)
+        vc.providesPresentationContextTransitionStyle = true
+        vc.definesPresentationContext = true
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalTransitionStyle = .crossDissolve
+        self.present(vc, animated: true, completion: nil)
     }
     
     @objc func pinch(pinch: UIPinchGestureRecognizer) {
@@ -178,7 +194,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
 
     
     func setupScene(node: SCNNode) {
-       
+
         node.position = centerNode.position
         
         let leftWall = createBox(isDoor: false)
