@@ -15,5 +15,6 @@ struct PlanetCollectionKeys {
     static let MeanTemperatureKey = "meanTemperature"
     static let NumberOfMoonsKey = "numberOfMoons"
     static let DescriptionKey = "description"
+    static let PlanetDetailImageKey = "planetDetailImage"
 
 }
