@@ -1,11 +1,28 @@
+//
+//  SolarDetailView.swift
+//  StellarApp
+//
+//  Created by Diego Estrella III on 4/12/19.
+//  Copyright © 2019 TingxinLi. All rights reserved.
+//
+
 import UIKit
 
 class SolarDetailView: UIView {
+
+    private let cornerRadiusMeasurement: CGFloat = 10
+    private let planetType: PlanetType
+    private lazy var contentView: PlanetInfoView = {
+        guard let planetInfo = PlanetInfoCache.shared.planetMapping[planetType] else {fatalError("Missing Info for Planet: \(planetType.rawValue)")}
+    return PlanetInfoView(planetInfo: planetInfo)
+    }()
 
     public lazy var backgroundImageView: UIImageView = {
         let backgroundImage = UIImageView()
         backgroundImage.image = UIImage(named: "stars")
         backgroundImage.clipsToBounds = true
+        backgroundImage.layer.cornerRadius = cornerRadiusMeasurement
+        backgroundImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         backgroundImage.contentMode = .scaleToFill
         return backgroundImage
     }()
@@ -13,52 +30,49 @@ class SolarDetailView: UIView {
     public lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.clipsToBounds = true
-        image.contentMode = .scaleToFill
-        image.image = UIImage(named: "phimage")
+        image.contentMode = .scaleAspectFit
+        image.image = UIImage.getPlanetDetailImage(planetType: planetType)
         return image
     }()
 
     public lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-//        scrollView.delegate = self
-        scrollView.backgroundColor = .gray
+        scrollView.backgroundColor = .black
+        scrollView.indicatorStyle = .white
+
         return scrollView
     }()
 
-    public lazy var textView: UITextView = {
-        let textView = UITextView()
-        textView.backgroundColor = .black
-        textView.textColor = .white
-        textView.isEditable = false
-//        textView.isSelectable  = false
-        return textView
-    }()
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("Unimplemented use init(_: PlanetType)")
+    }
 
-    override init(frame: CGRect) {
+    init(planetType: PlanetType) {
+        self.planetType = planetType
         super.init(frame: UIScreen.main.bounds)
         commonInit()
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-
     private func commonInit() {
+        setBaseAttributes()
         setbackgroundImage()
         setImageView()
         setScrollView()
-        setTextView()
+    }
+
+    private func setBaseAttributes() {
+        backgroundColor = .black
+        layer.cornerRadius = cornerRadiusMeasurement
     }
 
     private func setbackgroundImage() {
         addSubview(backgroundImageView)
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            backgroundImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
-            backgroundImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 100),
-            backgroundImageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -365),
-            backgroundImageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -80)
+            backgroundImageView.topAnchor.constraint(equalTo: topAnchor),
+            backgroundImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            backgroundImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5)
             ])
     }
 
@@ -66,34 +80,39 @@ class SolarDetailView: UIView {
         addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
-            imageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 100),
-            imageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -365),
-            imageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -80)
-            ])
-    }
-
-    private func setTextView() {
-        addSubview(textView)
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            textView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 8),
-            textView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 8),
-            textView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -8),
-            textView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -8)
+            imageView.topAnchor.constraint(equalTo: backgroundImageView.topAnchor, constant: 16),
+            imageView.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 16),
+            imageView.trailingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: -16),
+            imageView.bottomAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: -16)
             ])
     }
 
     private func setScrollView() {
         addSubview(scrollView)
-        scrollView.addSubview(textView)
+        scrollView.addSubview(contentView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
-            scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 365),
-            scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -100),
-            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -80)
+            scrollView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            scrollView.leadingAnchor.constraint(equalTo: backgroundImageView.trailingAnchor, constant: 16),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+            ])
+        
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 1),
             ])
     }
+}
 
+extension UIImage {
+    static func getPlanetDetailImage(planetType: PlanetType) -> UIImage {
+       let fileName = "art.scnassets/structure_\(planetType.rawValue).png"
+
+        return UIImage(named: fileName)!
+    }
 }

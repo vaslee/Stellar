@@ -2,9 +2,9 @@ import UIKit
 
 class SolarDetailViewController: UIViewController {
 
-    private var planetInfo = [PlanetInfo]()
+    var planetType: PlanetType!
 
-    private lazy var solarDetailView = SolarDetailView()
+    private lazy var solarDetailView = SolarDetailView(planetType: planetType)
     private lazy var tapView: TapRecognizingView = {
         let tapView = TapRecognizingView()
         tapView.onTap = { [weak self] in self?.dismiss(animated: true, completion: nil)}
@@ -14,10 +14,9 @@ class SolarDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(solarDetailView)
         layoutTapView()
-        getPlanetData()
-        getUIData()
+        setUpSolarDetailView()
+
     }
 
     private func layoutTapView() {
@@ -30,22 +29,16 @@ class SolarDetailViewController: UIViewController {
             ])
     }
 
-    private func getUIData() {
-        solarDetailView.textView.text = planetInfo.first?.description
-        solarDetailView.imageView.image = UIImage(named: planetInfo.first?.planetDetailImage ?? "plimage")
+    private func setUpSolarDetailView() {
+        solarDetailView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(solarDetailView)
+        NSLayoutConstraint.activate([
+            solarDetailView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
+            solarDetailView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
+            solarDetailView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            solarDetailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24),
+            ])
     }
-
-    private func getPlanetData() {
-        if let path = Bundle.main.path(forResource: "planet", ofType: "json") {
-            let url = URL.init(fileURLWithPath: path)
-            if let data = try? Data.init(contentsOf: url) {
-                do {
-                    _ = try JSONDecoder().decode(PlanetData.self, from: data)
-                } catch {
-                    print("Error: \(error)")
-                }
-            }
-        }
-    }
+    
 
 }

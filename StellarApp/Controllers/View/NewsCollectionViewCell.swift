@@ -10,23 +10,34 @@ import UIKit
 
 class NewsCollectionViewCell: UICollectionViewCell {
     
-    public lazy var solarImage: UIImageView = {
+    public lazy var articleImage: UIImageView = {
         let image = UIImageView(image: UIImage(named: "placeholder-image"))
         image.clipsToBounds = true
         return image
     }()
     
-    public lazy var solarDescription: UITextView = {
-        let description = UITextView()
+    public lazy var articleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "SAMPLE"
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.95
+        label.textColor = .white
+        return label
+    }()
+    
+    public lazy var articleDescription: UILabel = {
+        let description = UILabel()
+        description.numberOfLines = 0
         description.text = "This solar system is mercury"
-        description.textColor = .black
-        description.backgroundColor = .blue
+        description.textColor = .white
+        description.backgroundColor = .clear
         return description
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSolarImage()
+        setupLabel()
         setupDescription()
         
     }
@@ -36,22 +47,32 @@ class NewsCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupSolarImage() {
-        addSubview(solarImage)
-        solarImage.translatesAutoresizingMaskIntoConstraints = false
-        solarImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
-        solarImage.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
-        solarImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -28).isActive = true
-        solarImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.38).isActive = true
+        addSubview(articleImage)
+        articleImage.translatesAutoresizingMaskIntoConstraints = false
+        articleImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
+        articleImage.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
+        articleImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -28).isActive = true
+        articleImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.38).isActive = true
+        
+    }
+    
+    private func setupLabel() {
+        addSubview(articleLabel)
+        articleLabel.translatesAutoresizingMaskIntoConstraints = false
+        articleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 3).isActive = true
+       articleLabel.leadingAnchor.constraint(equalTo: articleImage.trailingAnchor, constant: 30).isActive = true
+        articleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        articleLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.18).isActive = true
         
     }
     
     private func setupDescription() {
-        addSubview(solarDescription)
-        solarDescription.translatesAutoresizingMaskIntoConstraints = false
-        solarDescription.leadingAnchor.constraint(equalTo: solarImage.trailingAnchor, constant: 30).isActive = true
-        solarDescription.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
-        solarDescription.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -28).isActive = true
-        solarDescription.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        addSubview(articleDescription)
+        articleDescription.translatesAutoresizingMaskIntoConstraints = false
+        articleDescription.leadingAnchor.constraint(equalTo: articleImage.trailingAnchor, constant: 30).isActive = true
+        articleDescription.topAnchor.constraint(equalTo: articleLabel.bottomAnchor, constant: 8).isActive = true
+        articleDescription.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -28).isActive = true
+        articleDescription.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
     }
 
 }
