@@ -28,7 +28,7 @@ class NewsViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         setGradient()
     }
-    func setGradient() {
+    private func setGradient() {
         let firstColor = UIColor.init(red: 236/255, green: 233/255, blue: 230/255, alpha: 1)
         let secondColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         let gradient = CAGradientLayer()
@@ -64,9 +64,7 @@ extension NewsViewController: UICollectionViewDataSource {
             if let error = error {
                 print(error.errorMessage())
         }  else if let data = data {
-                cell.articleImage.layer.borderWidth = 5
                 cell.articleImage.layer.cornerRadius = 5
-                cell.articleImage.layer.borderColor = UIColor.clear.cgColor
                 cell.articleImage.image = data
             
             }
