@@ -17,6 +17,7 @@
 		6295AE3C225E3A6C007118E3 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6295AE3B225E3A6C007118E3 /* DBService.swift */; };
 		6295AE3E2260FC7B007118E3 /* SolarDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6295AE3D2260FC7B007118E3 /* SolarDetailView.swift */; };
 		62B8FEB4227299EF0020E854 /* TapRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B8FEB3227299EF0020E854 /* TapRecognizerView.swift */; };
+		62B8FEB62276646D0020E854 /* PlanetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B8FEB52276646D0020E854 /* PlanetInfoView.swift */; };
 		900465A7227201220066D13D /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 900465A4227201210066D13D /* background.mp3 */; };
 		900465A8227201220066D13D /* MenuClick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 900465A5227201210066D13D /* MenuClick.wav */; };
 		900465A9227201220066D13D /* planetSelect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 900465A6227201220066D13D /* planetSelect.wav */; };
@@ -55,6 +56,7 @@
 		6295AE3B225E3A6C007118E3 /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
 		6295AE3D2260FC7B007118E3 /* SolarDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarDetailView.swift; sourceTree = "<group>"; };
 		62B8FEB3227299EF0020E854 /* TapRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecognizerView.swift; sourceTree = "<group>"; };
+		62B8FEB52276646D0020E854 /* PlanetInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetInfoView.swift; sourceTree = "<group>"; };
 		900465A4227201210066D13D /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
 		900465A5227201210066D13D /* MenuClick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = MenuClick.wav; sourceTree = "<group>"; };
 		900465A6227201220066D13D /* planetSelect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = planetSelect.wav; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				90F37BD622695CBE00645186 /* SolarView.swift */,
 				2B6254D8225FA55800704ED4 /* NewsView.swift */,
 				6295AE3D2260FC7B007118E3 /* SolarDetailView.swift */,
+				62B8FEB52276646D0020E854 /* PlanetInfoView.swift */,
 				9033D93F2260DB8B000ACA50 /* MenuView.swift */,
 				2B6254DB225FA65C00704ED4 /* NewsCollectionViewCell.swift */,
 			);
@@ -303,6 +306,7 @@
 				90BAD004225E87BA00587F57 /* PlanetaryBody.swift in Sources */,
 				900C0E05225BEA560027BBF9 /* Protocols.swift in Sources */,
 				2BC11DD52261101F0031D26A /* DataPersistenceManager.swift in Sources */,
+				62B8FEB62276646D0020E854 /* PlanetInfoView.swift in Sources */,
 				900A58C22257F01100C2C626 /* SolarViewController.swift in Sources */,
 				90BAD002225E87BA00587F57 /* Planet.swift in Sources */,
 				900C0E00225BE9E90027BBF9 /* NewsViewController.swift in Sources */,
