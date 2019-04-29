@@ -21,9 +21,6 @@ class NewsViewController: UIViewController {
         getArticles(keyword: "astronomy")
     }
     
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.portrait
-    }
     
     override func viewDidLayoutSubviews() {
         setGradient()
