@@ -22,14 +22,16 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
     
     let centerNode = CenterNode.getCenterNode()
     var playAnimation: PlayAnimation = .animation
-    var portalChange: PortalChange = .reality
+    var portalChange: PortalChange = .reality {
+        didSet {
+            updateScene()
+        }
+    }
 
     lazy var solarView: SolarView = {
         return SolarView()
     }()
 
-    let cubeNode = CubeMapBox(wallHeight: 40, wallThickness: 0.1, wallLength: 40, textures: .spaceTextures)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,19 +39,9 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.showsStatistics = true
 
-        
-        setUpSolarView()
-
-
-        sceneView.scene.rootNode.addChildNode(centerNode)
-        Planet.getPlanets().forEach { centerNode.addChildNode($0) }
+        updateScene()
         
         //        Sound.playSound(sound: "background", format: "mp3")
-
-        solarView.playButton.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
-        solarView.mySwitch.addTarget(self, action: #selector(portalSwitch), for: .valueChanged)
-
-        
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapped(sender:)))
         let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(pinch:)))
@@ -57,10 +49,9 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         sceneView.addGestureRecognizer(tapGestureRecognizer)
         sceneView.addGestureRecognizer(pinchGestureRecognizer)
 
+        setUpSolarView()
     }
-    
-    
-    
+
     @objc func playPressed() {
 //        if playAnimation == .regular {
 //            playAnimation = .animation
@@ -99,48 +90,25 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
     
     private func setUpSolarView() {
         solarView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(solarView)
+        solarView.layer.borderColor = UIColor.orange.cgColor
+        solarView.layer.borderWidth = 2
+        sceneView.addSubview(solarView)
+        sceneView.bringSubviewToFront(solarView)
 
         NSLayoutConstraint.activate([
-            solarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            solarView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4)
+            solarView.topAnchor.constraint(equalTo: sceneView.safeAreaLayoutGuide.topAnchor, constant: 8),
+            solarView.trailingAnchor.constraint(equalTo: sceneView.safeAreaLayoutGuide.trailingAnchor, constant: -4)
             ])
+
+        solarView.playButton.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
+        solarView.mySwitch.addTarget(self, action: #selector(portalSwitch), for: .valueChanged)
     }
 
     @objc func portalSwitch() {
-        
         if portalChange == .galaxy {
             portalChange = .reality
-                          solarView.mySwitch.isOn = true
         } else {
             portalChange = .galaxy
-                         solarView.mySwitch.isOn = false
-        }
-        
-        switch portalChange {
-        case .reality:
-            sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
-                node.removeFromParentNode()
-            }
-            sceneView.scene.rootNode.addChildNode(centerNode)
-            Planet.getPlanets().forEach { centerNode.addChildNode($0) }
-            
-        case .galaxy:
-            sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
-                node.removeFromParentNode()
-            }
-            
-            
-            setupScene(node: centerNode)
-            cubeNode.addChildNode(centerNode)
-//            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
-//            let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
-//
-//            sceneView.addGestureRecognizer(tapGestureRecognizer)
-//            sceneView.addGestureRecognizer(pinchGestureRecognizer)
-            MovedPlanet.getPlanets().forEach { centerNode.addChildNode($0) }
-
-            
         }
     }
     
@@ -174,8 +142,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
             pinch.scale = 1.0
         }
     }
-    
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -189,31 +156,23 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
 
-    
-    func setupScene(node: SCNNode) {
-       
-        cubeNode.position = centerNode.position
-        sceneView.scene.rootNode.addChildNode(cubeNode)
+    private func updateScene() {
+        sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
+            node.removeFromParentNode()
+        }
 
-//        let light = SCNLight()
-//        light.type = .spot
-//        light.spotInnerAngle = 70
-//        light.spotOuterAngle = 120
-//        light.zNear = 0.00001
-//        light.zFar = 5
-//        light.castsShadow = true
-//        light.shadowRadius = 200
-//        light.shadowColor = UIColor.black.withAlphaComponent(0.3)
-//        light.shadowMode = .deferred
-//        let constraint = SCNLookAtConstraint(target: centerNode)
-//        constraint.isGimbalLockEnabled = true
-//
-//        let lightNode = SCNNode()
-//        lightNode.light = light
-//        lightNode.position = SCNVector3.init(0, 19.5, 0)
-//        lightNode.constraints = [constraint]
-//        node.addChildNode(lightNode)
-//
+        switch portalChange {
+        case .reality:
+            sceneView.scene.rootNode.addChildNode(centerNode)
+            Planet.getPlanets().forEach { centerNode.addChildNode($0) }
+
+        case .galaxy:
+            let cubeNode = CubeMapBox(wallHeight: 50, wallThickness: 0.1, wallLength: 50, textures: .spaceTextures)
+            sceneView.scene.rootNode.addChildNode(centerNode)
+            centerNode.addChildNode(cubeNode)
+
+            MovedPlanet.getPlanets().forEach { centerNode.addChildNode($0) }
+        }
     }
     
 }
