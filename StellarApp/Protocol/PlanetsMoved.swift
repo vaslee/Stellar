@@ -9,27 +9,13 @@
 import UIKit
 import ARKit
 
-enum MovedPlanetType: CaseIterable{
-    
-    case sun
-    case mercury
-    case venus
-    case earth
-    case mars
-    case jupiter
-    case saturn
-    case uranus
-    case neptune
-    case pluto
-}
-
 struct NewCenterNode {
     static func getCenterNode() -> SCNNode {
         
         return SCNNode.getNodes(name: "sun", image: UIImage(named: "art.scnassets/sun.jpg")!, radius: CGFloat.leastNormalMagnitude, vector: (x: -1, y: 0, z: 0), moveSpeed: 0, rotation: 0)
     }
-    
 }
+
 struct MovedPlanet {
     static var planetNodes = [SCNNode]()
     
@@ -149,9 +135,7 @@ extension SCNNode {
         node.position = SCNVector3(x: vector.x, y: vector.y, z: vector.z)
         node.geometry = nodeSize
         node.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: rotation, z: 0, duration: 1)))
-        
         return node
-        
     }
     
     static func getRings(radius: CGFloat,
@@ -165,8 +149,7 @@ extension SCNNode {
         ringNode.geometry = ringGeo
         ringNode.position = SCNVector3(x: vector.x, y: vector.y, z: vector.z)
         ringGeo.firstMaterial?.diffuse.contents = color
-        
-        
+
         return ringNode
     }
     

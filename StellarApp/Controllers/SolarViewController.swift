@@ -15,47 +15,39 @@ enum PortalChange {
 }
 
 class SolarViewController: UIViewController, ARSCNViewDelegate {
-    
 
     @IBOutlet var sceneView: ARSCNView!
 
-    
     let centerNode = CenterNode.getCenterNode()
     var playAnimation: PlayAnimation = .animation
     var portalChange: PortalChange = .reality
 
-    let solarView = SolarView()
-    
+    lazy var solarView: SolarView = {
+        return SolarView()
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         sceneView.delegate = self
         
         sceneView.showsStatistics = true
-      
-        
-        view.addSubview(solarView)
-        
+
+        setUpSolarView()
 
         sceneView.scene.rootNode.addChildNode(centerNode)
         Planet.getPlanets().forEach { centerNode.addChildNode($0) }
         
-        Sound.playSound(sound: "background", format: "mp3")
+        //        Sound.playSound(sound: "background", format: "mp3")
 
         solarView.playButton.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
         solarView.mySwitch.addTarget(self, action: #selector(portalSwitch), for: .valueChanged)
-       
-        
-        
-//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
-//        let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
-//
-//        sceneView.addGestureRecognizer(tapGestureRecognizer)
-//        sceneView.addGestureRecognizer(pinchGestureRecognizer)
 
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapped(sender:)))
+        let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(pinch:)))
+        sceneView.addGestureRecognizer(tapGestureRecognizer)
+        sceneView.addGestureRecognizer(pinchGestureRecognizer)
     }
-    
-    
     
     @objc func playPressed() {
         if playAnimation == .regular {
@@ -64,28 +56,22 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
             playAnimation = .regular
         }
         
-
         switch playAnimation {
         case .regular:
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
             let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
-    
 
             sceneView.addGestureRecognizer(tapGestureRecognizer)
             sceneView.addGestureRecognizer(pinchGestureRecognizer)
             sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
                 node.removeFromParentNode()
             }
-
             sceneView.scene.rootNode.addChildNode(centerNode)
             Planet.getPlanets().forEach { centerNode.addChildNode($0) }
             sceneView.isUserInteractionEnabled = true
-            
         case .animation:
-            
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
             let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
-            
             sceneView.removeGestureRecognizer(tapGestureRecognizer)
             sceneView.removeGestureRecognizer(pinchGestureRecognizer)
             sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
@@ -94,23 +80,27 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
             sceneView.scene.rootNode.addChildNode(centerNode)
             MovedPlanet.getPlanets().forEach { centerNode.addChildNode($0) }
             sceneView.isUserInteractionEnabled = false
-            
         }
     }
     
-    
+    private func setUpSolarView() {
+        solarView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(solarView)
 
-      
-    
+        NSLayoutConstraint.activate([
+            solarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            solarView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4)
+            ])
+    }
 
     @objc func portalSwitch() {
         
         if portalChange == .galaxy {
             portalChange = .reality
-              solarView.mySwitch.isOn = true
+            //              solarView.mySwitch.isOn = true
         } else {
             portalChange = .galaxy
-             solarView.mySwitch.isOn = false
+            //             solarView.mySwitch.isOn = false
         }
         
         switch portalChange {
@@ -134,8 +124,6 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
             sceneView.addGestureRecognizer(tapGestureRecognizer)
             sceneView.addGestureRecognizer(pinchGestureRecognizer)
             MovedPlanet.getPlanets().forEach { centerNode.addChildNode($0) }
-
-            
         }
     }
     
@@ -143,11 +131,22 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         let tappedView = sender.view as!SCNView
         let touchLocation = sender.location(in: tappedView)
         let hitTest = tappedView.hitTest(touchLocation, options: nil)
-        if !hitTest.isEmpty {
+        if let nodeName = hitTest.first?.node.name,
+            let planetType = PlanetType(rawValue: nodeName) {
             Sound.playSound(sound: "planetSelect", format: "wav")
-            self.present(SolarDetailViewController(), animated: true, completion: nil)
-            
+            planetTapped(planetType: planetType)
         }
+    }
+
+    private func planetTapped(planetType: PlanetType) {
+        let vc = SolarDetailViewController()
+        vc.planetType = planetType
+        vc.view.backgroundColor = UIColor.init(white: 0.2, alpha: 0.5)
+        vc.providesPresentationContextTransitionStyle = true
+        vc.definesPresentationContext = true
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalTransitionStyle = .crossDissolve
+        self.present(vc, animated: true, completion: nil)
     }
     
     @objc func pinch(pinch: UIPinchGestureRecognizer) {
@@ -162,24 +161,21 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
         let configuration = ARWorldTrackingConfiguration()
-
         sceneView.session.run(configuration)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
-    
     func setupScene(node: SCNNode) {
-       
+
         node.position = centerNode.position
         
         let leftWall = createBox(isDoor: false)
@@ -195,15 +191,12 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         
         let bottomWall = createBox(isDoor: false)
         bottomWall.position = SCNVector3.init(0, (-height/2) + width, 0)
-        
         bottomWall.eulerAngles = SCNVector3.init(0, 0 , -90.0.degreesToRadians)
-        
         
         let backWall = createBox(isDoor: false)
         backWall.position = SCNVector3.init(0, 0, (-length/2) + width)
         backWall.eulerAngles = SCNVector3.init(0, 90.0.degreesToRadians, 0)
         
-
         let leftDoorSide = createBox(isDoor: true)
         leftDoorSide.position = SCNVector3.init((-length/2) + doorLength/2 , 0 , (length/2))
         leftDoorSide.eulerAngles = SCNVector3.init(0, -90.0.degreesToRadians, 0)
@@ -230,8 +223,6 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         lightNode.position = SCNVector3.init(0, (height/2) - width, 0)
         lightNode.constraints = [constraint]
         node.addChildNode(lightNode)
-        
-        
         node.addChildNode(leftWall)
         node.addChildNode(rightWall)
         node.addChildNode(topWall)
@@ -239,9 +230,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         node.addChildNode(backWall)
         node.addChildNode(leftDoorSide)
         node.addChildNode(rightDoorSide)
-        
-        
-        
+
         self.sceneView.scene.rootNode.addChildNode(node)
 
     }
