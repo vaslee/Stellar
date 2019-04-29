@@ -15,11 +15,9 @@ enum PortalChange {
 }
 
 class SolarViewController: UIViewController, ARSCNViewDelegate {
-    
 
     @IBOutlet var sceneView: ARSCNView!
 
-    
     let centerNode = CenterNode.getCenterNode()
     var playAnimation: PlayAnimation = .animation
     var portalChange: PortalChange = .reality {
@@ -43,9 +41,9 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         
         //        Sound.playSound(sound: "background", format: "mp3")
         
+
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapped(sender:)))
         let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(pinch:)))
-
         sceneView.addGestureRecognizer(tapGestureRecognizer)
         sceneView.addGestureRecognizer(pinchGestureRecognizer)
 
@@ -88,6 +86,8 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
 //        }
     }
     
+   
+    
     private func setUpSolarView() {
         solarView.translatesAutoresizingMaskIntoConstraints = false
         solarView.layer.borderColor = UIColor.orange.cgColor
@@ -116,14 +116,16 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         let tappedView = sender.view as!SCNView
         let touchLocation = sender.location(in: tappedView)
         let hitTest = tappedView.hitTest(touchLocation, options: nil)
-        if !hitTest.isEmpty {
+        if let nodeName = hitTest.first?.node.name,
+            let planetType = PlanetType(rawValue: nodeName) {
             Sound.playSound(sound: "planetSelect", format: "wav")
-            planetTapped()
+            planetTapped(planetType: planetType)
         }
     }
 
-    private func planetTapped() {
+    private func planetTapped(planetType: PlanetType) {
         let vc = SolarDetailViewController()
+        vc.planetType = planetType
         vc.view.backgroundColor = UIColor.init(white: 0.2, alpha: 0.5)
         vc.providesPresentationContextTransitionStyle = true
         vc.definesPresentationContext = true
@@ -145,21 +147,22 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         let configuration = ARWorldTrackingConfiguration()
-
         sceneView.session.run(configuration)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
     private func updateScene() {
         sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
             node.removeFromParentNode()
         }
+
 
         switch portalChange {
         case .reality:
@@ -170,7 +173,6 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
             let cubeNode = CubeMapBox(wallHeight: 50, wallThickness: 0.1, wallLength: 50, textures: .spaceTextures)
             sceneView.scene.rootNode.addChildNode(centerNode)
             centerNode.addChildNode(cubeNode)
-
             MovedPlanet.getPlanets().forEach { centerNode.addChildNode($0) }
         }
     }

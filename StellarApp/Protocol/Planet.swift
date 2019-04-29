@@ -9,7 +9,7 @@
 import UIKit
 import ARKit
 
-enum PlanetType: CaseIterable{
+enum PlanetType: String, CaseIterable{
     
     case sun
     case mercury
@@ -22,6 +22,7 @@ enum PlanetType: CaseIterable{
     case neptune
     case pluto
 }
+
 struct RotationVector {
     let x: CGFloat, y: CGFloat, z: CGFloat
 }
