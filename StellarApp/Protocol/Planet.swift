@@ -56,9 +56,6 @@ class RotatingNode: SCNNode, Rotatable {
     
 }
 
-
-
-
 struct CenterNode {
     static func getCenterNode() -> SCNNode {
         
