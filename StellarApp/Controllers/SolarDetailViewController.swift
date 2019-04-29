@@ -1,30 +1,44 @@
-//
-//  SolarDetailViewController.swift
-//  StellarApp
-//
-//  Created by TingxinLi on 4/8/19.
-//  Copyright © 2019 TingxinLi. All rights reserved.
-//
-
 import UIKit
 
 class SolarDetailViewController: UIViewController {
 
+    var planetType: PlanetType!
+
+    private lazy var solarDetailView = SolarDetailView(planetType: planetType)
+    private lazy var tapView: TapRecognizingView = {
+        let tapView = TapRecognizingView()
+        tapView.onTap = { [weak self] in self?.dismiss(animated: true, completion: nil)}
+        tapView.translatesAutoresizingMaskIntoConstraints = false
+        return tapView
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        layoutTapView()
+        setUpSolarDetailView()
 
-        // Do any additional setup after loading the view.
+    }
+
+    private func layoutTapView() {
+        view.addSubview(tapView)
+        NSLayoutConstraint.activate([
+            tapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            ])
+    }
+
+    private func setUpSolarDetailView() {
+        solarDetailView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(solarDetailView)
+        NSLayoutConstraint.activate([
+            solarDetailView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
+            solarDetailView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
+            solarDetailView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            solarDetailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24),
+            ])
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
