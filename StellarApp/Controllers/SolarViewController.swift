@@ -18,6 +18,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
 
+    let customTabBarHeight = 50
     let centerNode = CenterNode.getCenterNode()
     var playAnimation: PlayAnimation = .animation
     var portalChange: PortalChange = .reality {
@@ -35,7 +36,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.delegate = self
         
-        sceneView.showsStatistics = true
+        //sceneView.showsStatistics = true
 
         updateScene()
         
@@ -48,6 +49,15 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         sceneView.addGestureRecognizer(pinchGestureRecognizer)
 
         setUpSolarView()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        var customTabFrame = self.tabBarController?.tabBar.frame
+        customTabFrame?.size.height = CGFloat(customTabBarHeight)
+        customTabFrame?.origin.y = self.view.frame.size.height - CGFloat(customTabBarHeight)
+        self.tabBarController?.tabBar.frame = customTabFrame!
+        tabBarController?.tabBar.barTintColor = .black
+        tabBarController?.tabBar.tintColor = .white
     }
 
     @objc func playPressed() {
