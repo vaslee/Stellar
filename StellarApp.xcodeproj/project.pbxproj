@@ -18,7 +18,7 @@
 		6295AE3E2260FC7B007118E3 /* SolarDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6295AE3D2260FC7B007118E3 /* SolarDetailView.swift */; };
 		62B8FEB4227299EF0020E854 /* TapRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B8FEB3227299EF0020E854 /* TapRecognizerView.swift */; };
 		62B8FEB62276646D0020E854 /* PlanetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B8FEB52276646D0020E854 /* PlanetInfoView.swift */; };
-		900465A7227201220066D13D /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 900465A4227201210066D13D /* background.mp3 */; };
+
 		900465A8227201220066D13D /* MenuClick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 900465A5227201210066D13D /* MenuClick.wav */; };
 		900465A9227201220066D13D /* planetSelect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 900465A6227201220066D13D /* planetSelect.wav */; };
 		900465AC227272D50066D13D /* CubeMapBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900465AB227272D50066D13D /* CubeMapBox.swift */; };
@@ -58,7 +58,7 @@
 		6295AE3D2260FC7B007118E3 /* SolarDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarDetailView.swift; sourceTree = "<group>"; };
 		62B8FEB3227299EF0020E854 /* TapRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecognizerView.swift; sourceTree = "<group>"; };
 		62B8FEB52276646D0020E854 /* PlanetInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetInfoView.swift; sourceTree = "<group>"; };
-		900465A4227201210066D13D /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+
 		900465A5227201210066D13D /* MenuClick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = MenuClick.wav; sourceTree = "<group>"; };
 		900465A6227201220066D13D /* planetSelect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = planetSelect.wav; sourceTree = "<group>"; };
 		900465AB227272D50066D13D /* CubeMapBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeMapBox.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 			children = (
 				900465A6227201220066D13D /* planetSelect.wav */,
 				900465A5227201210066D13D /* MenuClick.wav */,
-				900465A4227201210066D13D /* background.mp3 */,
+
 			);
 			path = "Sounds Files";
 			sourceTree = "<group>";
@@ -276,7 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				900A58C02257F01100C2C626 /* art.scnassets in Resources */,
-				900465A7227201220066D13D /* background.mp3 in Resources */,
+
 				900465A9227201220066D13D /* planetSelect.wav in Resources */,
 				900A58CA2257F01200C2C626 /* LaunchScreen.storyboard in Resources */,
 				900A58C72257F01200C2C626 /* Assets.xcassets in Resources */,
