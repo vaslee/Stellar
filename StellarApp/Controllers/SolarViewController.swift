@@ -90,6 +90,11 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
     
     private func setUpSolarView() {
         solarView.translatesAutoresizingMaskIntoConstraints = false
+<<<<<<< HEAD
+=======
+        solarView.layer.borderColor = UIColor.orange.cgColor
+        solarView.layer.borderWidth = 2
+>>>>>>> 2493af31ea390b2106d49c732c15931e669566dc
         sceneView.addSubview(solarView)
         sceneView.bringSubviewToFront(solarView)
 
