@@ -60,8 +60,7 @@ class CubeMapBox: SCNNode {
                                     thickness: wallThickness,
                                     length: wallLength,
                                     texture: textures.front)
-       // frontWall.position = SCNVector3(0, 0, (wallLength/2) + wallThickness)
-        frontWall.position = SCNVector3(/*(-wallLength/2)*/0 , 0 , (wallLength/10) + wallThickness)
+        frontWall.position = SCNVector3(0, 0, (wallLength/2) + wallThickness)
         frontWall.eulerAngles = SCNVector3.init(0, 90.0.degreesToRadians, 0)
         
         self.addChildNode(leftWall)
@@ -69,7 +68,7 @@ class CubeMapBox: SCNNode {
         self.addChildNode(topWall)
         self.addChildNode(bottomWall)
         self.addChildNode(backWall)
-      //  self.addChildNode(frontWall)
+        self.addChildNode(frontWall)
         
     }
     
