@@ -9,6 +9,7 @@
 import Foundation
 import SceneKit
 
+
 struct CubeMapTextures {
     let front, back, top, left, right, bottom: UIImage
 }

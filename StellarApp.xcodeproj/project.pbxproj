@@ -18,7 +18,6 @@
 		6295AE3E2260FC7B007118E3 /* SolarDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6295AE3D2260FC7B007118E3 /* SolarDetailView.swift */; };
 		62B8FEB4227299EF0020E854 /* TapRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B8FEB3227299EF0020E854 /* TapRecognizerView.swift */; };
 		62B8FEB62276646D0020E854 /* PlanetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B8FEB52276646D0020E854 /* PlanetInfoView.swift */; };
-
 		900465A8227201220066D13D /* MenuClick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 900465A5227201210066D13D /* MenuClick.wav */; };
 		900465A9227201220066D13D /* planetSelect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 900465A6227201220066D13D /* planetSelect.wav */; };
 		900465AC227272D50066D13D /* CubeMapBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900465AB227272D50066D13D /* CubeMapBox.swift */; };
@@ -38,6 +37,8 @@
 		900C0DFC225BE9C90027BBF9 /* SolarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C0DFB225BE9C90027BBF9 /* SolarDetailViewController.swift */; };
 		900C0E00225BE9E90027BBF9 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C0DFF225BE9E90027BBF9 /* NewsViewController.swift */; };
 		900C0E05225BEA560027BBF9 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C0E04225BEA560027BBF9 /* Protocols.swift */; };
+		900D113D227A4796007B3CDF /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900D113C227A4796007B3CDF /* Sounds.swift */; };
+		900D1143227A47CB007B3CDF /* OrbitRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900D1142227A47CB007B3CDF /* OrbitRotation.swift */; };
 		9033D9402260DB8B000ACA50 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9033D93F2260DB8B000ACA50 /* MenuView.swift */; };
 		90BAD002225E87BA00587F57 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BACFFF225E87BA00587F57 /* Planet.swift */; };
 		90BAD003225E87BA00587F57 /* CelestialBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BAD000225E87BA00587F57 /* CelestialBody.swift */; };
@@ -58,7 +59,6 @@
 		6295AE3D2260FC7B007118E3 /* SolarDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarDetailView.swift; sourceTree = "<group>"; };
 		62B8FEB3227299EF0020E854 /* TapRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecognizerView.swift; sourceTree = "<group>"; };
 		62B8FEB52276646D0020E854 /* PlanetInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetInfoView.swift; sourceTree = "<group>"; };
-
 		900465A5227201210066D13D /* MenuClick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = MenuClick.wav; sourceTree = "<group>"; };
 		900465A6227201220066D13D /* planetSelect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = planetSelect.wav; sourceTree = "<group>"; };
 		900465AB227272D50066D13D /* CubeMapBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeMapBox.swift; sourceTree = "<group>"; };
@@ -80,6 +80,8 @@
 		900C0DFB225BE9C90027BBF9 /* SolarDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarDetailViewController.swift; sourceTree = "<group>"; };
 		900C0DFF225BE9E90027BBF9 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		900C0E04225BEA560027BBF9 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		900D113C227A4796007B3CDF /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
+		900D1142227A47CB007B3CDF /* OrbitRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrbitRotation.swift; sourceTree = "<group>"; };
 		9033D93F2260DB8B000ACA50 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		90BACFFF225E87BA00587F57 /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		90BAD000225E87BA00587F57 /* CelestialBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelestialBody.swift; sourceTree = "<group>"; };
@@ -118,7 +120,6 @@
 			children = (
 				900465A6227201220066D13D /* planetSelect.wav */,
 				900465A5227201210066D13D /* MenuClick.wav */,
-
 			);
 			path = "Sounds Files";
 			sourceTree = "<group>";
@@ -211,6 +212,8 @@
 				90BAD001225E87BA00587F57 /* PlanetaryBody.swift */,
 				90BACFFF225E87BA00587F57 /* Planet.swift */,
 				90F37BD422695C0400645186 /* PlanetsMoved.swift */,
+				900D1142227A47CB007B3CDF /* OrbitRotation.swift */,
+				900D113C227A4796007B3CDF /* Sounds.swift */,
 				90066944226E0C8600CC1770 /* CubeMapWall.swift */,
 				900465AB227272D50066D13D /* CubeMapBox.swift */,
 			);
@@ -276,7 +279,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				900A58C02257F01100C2C626 /* art.scnassets in Resources */,
-
 				900465A9227201220066D13D /* planetSelect.wav in Resources */,
 				900A58CA2257F01200C2C626 /* LaunchScreen.storyboard in Resources */,
 				900A58C72257F01200C2C626 /* Assets.xcassets in Resources */,
@@ -303,6 +305,7 @@
 				9033D9402260DB8B000ACA50 /* MenuView.swift in Sources */,
 				2BC11DD7226125D90031D26A /* SecretKeys.swift in Sources */,
 				90BAD003225E87BA00587F57 /* CelestialBody.swift in Sources */,
+				900D113D227A4796007B3CDF /* Sounds.swift in Sources */,
 				2B6254D9225FA55800704ED4 /* NewsView.swift in Sources */,
 				09FC1CDF225FC3FE00CEAAED /* AppError.swift in Sources */,
 				62B8FEB4227299EF0020E854 /* TapRecognizerView.swift in Sources */,
@@ -313,6 +316,7 @@
 				900A58C22257F01100C2C626 /* SolarViewController.swift in Sources */,
 				90BAD002225E87BA00587F57 /* Planet.swift in Sources */,
 				900C0E00225BE9E90027BBF9 /* NewsViewController.swift in Sources */,
+				900D1143227A47CB007B3CDF /* OrbitRotation.swift in Sources */,
 				900465AC227272D50066D13D /* CubeMapBox.swift in Sources */,
 				90F37BD722695CBE00645186 /* SolarView.swift in Sources */,
 				6295AE3E2260FC7B007118E3 /* SolarDetailView.swift in Sources */,
@@ -471,8 +475,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YTJZLJSH82;
-
+				DEVELOPMENT_TEAM = RJ364J35FH;
 				INFOPLIST_FILE = StellarApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -492,8 +495,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YTJZLJSH82;
-
+				DEVELOPMENT_TEAM = RJ364J35FH;
 				INFOPLIST_FILE = StellarApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
