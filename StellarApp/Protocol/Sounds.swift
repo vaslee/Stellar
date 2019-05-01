@@ -1,5 +1,5 @@
 //
-//  SoundsFiles.swift
+//  Sounds.swift
 //  StellarApp
 //
 //  Created by TingxinLi on 5/1/19.
