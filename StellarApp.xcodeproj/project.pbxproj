@@ -18,7 +18,8 @@
 		6295AE3E2260FC7B007118E3 /* SolarDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6295AE3D2260FC7B007118E3 /* SolarDetailView.swift */; };
 		62B8FEB4227299EF0020E854 /* TapRecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B8FEB3227299EF0020E854 /* TapRecognizerView.swift */; };
 		62B8FEB62276646D0020E854 /* PlanetInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B8FEB52276646D0020E854 /* PlanetInfoView.swift */; };
-		900465A7227201220066D13D /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 900465A4227201210066D13D /* background.mp3 */; };
+		62B8FEC0227A02EE0020E854 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B8FEBF227A02EE0020E854 /* NetworkHelper.swift */; };
+		62B8FEC2227A02FD0020E854 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B8FEC1227A02FD0020E854 /* NewsCollectionViewCell.swift */; };
 		900465A8227201220066D13D /* MenuClick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 900465A5227201210066D13D /* MenuClick.wav */; };
 		900465A9227201220066D13D /* planetSelect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 900465A6227201220066D13D /* planetSelect.wav */; };
 		900465AC227272D50066D13D /* CubeMapBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900465AB227272D50066D13D /* CubeMapBox.swift */; };
@@ -39,6 +40,8 @@
 		900C0E00225BE9E90027BBF9 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C0DFF225BE9E90027BBF9 /* NewsViewController.swift */; };
 		900C0E05225BEA560027BBF9 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C0E04225BEA560027BBF9 /* Protocols.swift */; };
 		9033D9402260DB8B000ACA50 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9033D93F2260DB8B000ACA50 /* MenuView.swift */; };
+		908687B02279F867005D7B10 /* SoundsFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908687AF2279F867005D7B10 /* SoundsFiles.swift */; };
+		908687B22279F947005D7B10 /* OrbitRotationFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908687B12279F947005D7B10 /* OrbitRotationFiles.swift */; };
 		90BAD002225E87BA00587F57 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BACFFF225E87BA00587F57 /* Planet.swift */; };
 		90BAD003225E87BA00587F57 /* CelestialBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BAD000225E87BA00587F57 /* CelestialBody.swift */; };
 		90BAD004225E87BA00587F57 /* PlanetaryBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BAD001225E87BA00587F57 /* PlanetaryBody.swift */; };
@@ -58,7 +61,8 @@
 		6295AE3D2260FC7B007118E3 /* SolarDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarDetailView.swift; sourceTree = "<group>"; };
 		62B8FEB3227299EF0020E854 /* TapRecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapRecognizerView.swift; sourceTree = "<group>"; };
 		62B8FEB52276646D0020E854 /* PlanetInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetInfoView.swift; sourceTree = "<group>"; };
-		900465A4227201210066D13D /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+		62B8FEBF227A02EE0020E854 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		62B8FEC1227A02FD0020E854 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		900465A5227201210066D13D /* MenuClick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = MenuClick.wav; sourceTree = "<group>"; };
 		900465A6227201220066D13D /* planetSelect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = planetSelect.wav; sourceTree = "<group>"; };
 		900465AB227272D50066D13D /* CubeMapBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeMapBox.swift; sourceTree = "<group>"; };
@@ -81,6 +85,8 @@
 		900C0DFF225BE9E90027BBF9 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		900C0E04225BEA560027BBF9 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		9033D93F2260DB8B000ACA50 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		908687AF2279F867005D7B10 /* SoundsFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsFiles.swift; sourceTree = "<group>"; };
+		908687B12279F947005D7B10 /* OrbitRotationFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrbitRotationFiles.swift; sourceTree = "<group>"; };
 		90BACFFF225E87BA00587F57 /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		90BAD000225E87BA00587F57 /* CelestialBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelestialBody.swift; sourceTree = "<group>"; };
 		90BAD001225E87BA00587F57 /* PlanetaryBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetaryBody.swift; sourceTree = "<group>"; };
@@ -105,12 +111,21 @@
 				90F37BD622695CBE00645186 /* SolarView.swift */,
 				2B6254D8225FA55800704ED4 /* NewsView.swift */,
 				6295AE3D2260FC7B007118E3 /* SolarDetailView.swift */,
+				62B8FEC1227A02FD0020E854 /* NewsCollectionViewCell.swift */,
 				62B8FEB52276646D0020E854 /* PlanetInfoView.swift */,
 				9033D93F2260DB8B000ACA50 /* MenuView.swift */,
-				62B8FE9E2267719F0020E854 /* SolarDetailView.swift */,
 			);
 			name = View;
 			path = Controllers/View;
+			sourceTree = "<group>";
+		};
+		62B8FEBE227A02640020E854 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				2B6254DB225FA65C00704ED4 /* NewsCollectionViewCell.swift */,
+				09FC1CE0225FC48500CEAAED /* NetworkHelper.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		900465AA2272012A0066D13D /* Sounds Files */ = {
@@ -118,7 +133,6 @@
 			children = (
 				900465A6227201220066D13D /* planetSelect.wav */,
 				900465A5227201210066D13D /* MenuClick.wav */,
-				900465A4227201210066D13D /* background.mp3 */,
 			);
 			path = "Sounds Files";
 			sourceTree = "<group>";
@@ -128,6 +142,7 @@
 			children = (
 				900A58BC2257F01100C2C626 /* StellarApp */,
 				900A58BB2257F01100C2C626 /* Products */,
+				62B8FEBE227A02640020E854 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -192,8 +207,8 @@
 		900C0E06225BEA630027BBF9 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				62B8FEBF227A02EE0020E854 /* NetworkHelper.swift */,
 				900C0E04225BEA560027BBF9 /* Protocols.swift */,
-				62B8FEA02268D1530020E854 /* TapReconizerView.swift */,
 				6295AE3B225E3A6C007118E3 /* DBService.swift */,
 				62B8FEB3227299EF0020E854 /* TapRecognizerView.swift */,
 				900C0DEF225BE90C0027BBF9 /* NewsAPIClient.swift */,
@@ -211,6 +226,8 @@
 				90BAD001225E87BA00587F57 /* PlanetaryBody.swift */,
 				90BACFFF225E87BA00587F57 /* Planet.swift */,
 				90F37BD422695C0400645186 /* PlanetsMoved.swift */,
+				908687B12279F947005D7B10 /* OrbitRotationFiles.swift */,
+				908687AF2279F867005D7B10 /* SoundsFiles.swift */,
 				90066944226E0C8600CC1770 /* CubeMapWall.swift */,
 				900465AB227272D50066D13D /* CubeMapBox.swift */,
 			);
@@ -276,7 +293,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				900A58C02257F01100C2C626 /* art.scnassets in Resources */,
-				900465A7227201220066D13D /* background.mp3 in Resources */,
 				900465A9227201220066D13D /* planetSelect.wav in Resources */,
 				900A58CA2257F01200C2C626 /* LaunchScreen.storyboard in Resources */,
 				900A58C72257F01200C2C626 /* Assets.xcassets in Resources */,
@@ -294,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				900C0DF0225BE90C0027BBF9 /* NewsAPIClient.swift in Sources */,
+				908687B22279F947005D7B10 /* OrbitRotationFiles.swift in Sources */,
 				2BC11DD322610F230031D26A /* NewsDataManager.swift in Sources */,
 				2B6254DC225FA65C00704ED4 /* NewsCollectionViewCell.swift in Sources */,
 				900C0DF4225BE9270027BBF9 /* PlanetsInfo.swift in Sources */,
@@ -302,6 +319,7 @@
 				2B6254D9225FA55800704ED4 /* NewsView.swift in Sources */,
 				9033D9402260DB8B000ACA50 /* MenuView.swift in Sources */,
 				2BC11DD7226125D90031D26A /* SecretKeys.swift in Sources */,
+				62B8FEC0227A02EE0020E854 /* NetworkHelper.swift in Sources */,
 				90BAD003225E87BA00587F57 /* CelestialBody.swift in Sources */,
 				2B6254D9225FA55800704ED4 /* NewsView.swift in Sources */,
 				09FC1CDF225FC3FE00CEAAED /* AppError.swift in Sources */,
@@ -320,8 +338,9 @@
 				900A58BE2257F01100C2C626 /* AppDelegate.swift in Sources */,
 				900C0DF6225BE9300027BBF9 /* NewsInfo.swift in Sources */,
 				900C0DFC225BE9C90027BBF9 /* SolarDetailViewController.swift in Sources */,
+				62B8FEC2227A02FD0020E854 /* NewsCollectionViewCell.swift in Sources */,
+				908687B02279F867005D7B10 /* SoundsFiles.swift in Sources */,
 				6295AE3C225E3A6C007118E3 /* DBService.swift in Sources */,
-				62B8FEA12268D1530020E854 /* TapReconizerView.swift in Sources */,
 				900C0DF2225BE91A0027BBF9 /* ImageHelper.swift in Sources */,
 				900C0DFA225BE9820027BBF9 /* MenuViewController.swift in Sources */,
 				90F37BD522695C0400645186 /* PlanetsMoved.swift in Sources */,

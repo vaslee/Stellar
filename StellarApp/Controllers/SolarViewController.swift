@@ -18,6 +18,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
 
+    let customTabBarHeight = 50
     let centerNode = CenterNode.getCenterNode()
     var playAnimation: PlayAnimation = .animation
     var portalChange: PortalChange = .reality {
@@ -46,6 +47,15 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         sceneView.addGestureRecognizer(pinchGestureRecognizer)
 
         setUpSolarView()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        var customTabFrame = self.tabBarController?.tabBar.frame
+        customTabFrame?.size.height = CGFloat(customTabBarHeight)
+        customTabFrame?.origin.y = self.view.frame.size.height - CGFloat(customTabBarHeight)
+        self.tabBarController?.tabBar.frame = customTabFrame!
+        tabBarController?.tabBar.barTintColor = .black
+        tabBarController?.tabBar.tintColor = .white
     }
 
     @objc func playPressed() {
@@ -88,8 +98,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
     
     private func setUpSolarView() {
         solarView.translatesAutoresizingMaskIntoConstraints = false
-        solarView.layer.borderColor = UIColor.orange.cgColor
-        solarView.layer.borderWidth = 2
+
         sceneView.addSubview(solarView)
         sceneView.bringSubviewToFront(solarView)
 
@@ -138,7 +147,6 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         let pinchLocation = pinch.location(in: pinchView)
         let hitTest = pinchView.hitTest(pinchLocation, options: nil)
         if !hitTest.isEmpty {
-            //            let scaleAction = SCNAction.scale(by: pinch.scale, duration: 0)
             SCNNode.deepScaleNode(node: centerNode, scale: pinch.scale)
             pinch.scale = 1.0
         }

@@ -20,17 +20,6 @@ class CubeMapWall : SCNNode {
         firstBox.firstMaterial?.diffuse.contents = texture
         firstBoxNode.renderingOrder = 200
         self.addChildNode(firstBoxNode)
-        
-        // add masked box
-//        let maskedBox = SCNBox(width: thickness, height: height, length: length, chamferRadius: 0)
-//        maskedBox.firstMaterial?.diffuse.contents = UIColor.white
-//        
-//        maskedBox.firstMaterial?.transparency = 0.00001
-//        
-//        let maskedBoxNode = SCNNode(geometry: maskedBox)
-//        maskedBoxNode.renderingOrder = 100
-//        maskedBoxNode.position = SCNVector3.init(thickness, 0, 0)
-//        self.addChildNode(maskedBoxNode)
     }
     
     required init?(coder aDecoder: NSCoder) {
