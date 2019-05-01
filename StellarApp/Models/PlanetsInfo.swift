@@ -39,41 +39,6 @@ struct PlanetInfo: Codable {
         case updatedAt = "updated_at"
         case description
     }
-
-//    init(id: Int, name: String, mass: String, diameter: String, density: String, gravity: String, rotationPeriod: String, lenghtOfDay: String, distanceFromSun: String, orbitalPeriod: String, orbitalVelocity: String, meanTemperature: String, numberOfMoons: String, description: String) {
-//        self.id = id
-//        self.name = name
-//        self.mass = mass
-//        self.diameter = diameter
-//        self.density = density
-//        self.gravity = gravity
-//        self.rotationPeriod = rotationPeriod
-//        self.lenghtOfDay = lenghtOfDay
-//        self.distanceFromSun = distanceFromSun
-//        self.orbitalPeriod = orbitalPeriod
-//        self.orbitalVelocity = orbitalVelocity
-//        self.meanTemperature = meanTemperature
-//        self.numberOfMoons = numberOfMoons
-//        self.description = description
-//    }
-
-//    init(dict: [String: Any]) {
-//        self.id = dict[PlanetCollectionKeys.IdKey] as? Int ?? 0
-//        self.name = dict[PlanetCollectionKeys.NameKey] as? String ?? ""
-//        self.mass = dict[PlanetCollectionKeys.MassKey] as? String ?? ""
-//        self.diameter = dict[PlanetCollectionKeys.DiameterKey] as? String ?? ""
-//        self.density = dict[PlanetCollectionKeys.DensityKey] as? String ?? ""
-//        self.gravity = dict[PlanetCollectionKeys.GravityKey] as? String ?? ""
-//        self.rotationPeriod = dict[PlanetCollectionKeys.RotationPeriodKey] as? String ?? ""
-//        self.lenghtOfDay = dict[PlanetCollectionKeys.LengthOfDayKey] as? String ?? ""
-//        self.distanceFromSun = dict[PlanetCollectionKeys.DistanceFromSunKey] as? String ?? ""
-//        self.orbitalPeriod = dict[PlanetCollectionKeys.OrbitalPeriodKey] as? String ?? ""
-//        self.orbitalVelocity = dict[PlanetCollectionKeys.OrbitalVelocityKey] as? String ?? ""
-//        self.meanTemperature = dict[PlanetCollectionKeys.MeanTemperatureKey] as? String ?? ""
-//        self.numberOfMoons = dict[PlanetCollectionKeys.NumberOfMoonsKey] as? String ?? "0"
-//        self.description = dict[PlanetCollectionKeys.DescriptionKey] as? String ?? ""
-//
-//    }
 }
 
 class PlanetInfoCache {

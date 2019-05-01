@@ -148,7 +148,6 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         let pinchLocation = pinch.location(in: pinchView)
         let hitTest = pinchView.hitTest(pinchLocation, options: nil)
         if !hitTest.isEmpty {
-            //            let scaleAction = SCNAction.scale(by: pinch.scale, duration: 0)
             SCNNode.deepScaleNode(node: centerNode, scale: pinch.scale)
             pinch.scale = 1.0
         }
@@ -183,6 +182,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
             sceneView.scene.rootNode.addChildNode(centerNode)
             centerNode.addChildNode(cubeNode)
             MovedPlanet.getPlanets().forEach { centerNode.addChildNode($0) }
+            
         }
     }
     
