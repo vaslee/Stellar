@@ -16,7 +16,6 @@ class SolarDetailViewController: UIViewController {
         super.viewDidLoad()
         layoutTapView()
         setUpSolarDetailView()
-
     }
 
     private func layoutTapView() {
