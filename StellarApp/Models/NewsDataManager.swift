@@ -6,11 +6,11 @@
 //  Copyright © 2019 TingxinLi. All rights reserved.
 //
 
-import Foundation
-
+//import Foundation
+//
 //final class NewsDataManager {
 //    private init() {}
-//    
+//
 //    private static let filename = "NewsData.plist"
 //    static private var news = [NewsData]()
 //    static public func fetchNewsFromDocumentDirectory() -> [NewsData] {
