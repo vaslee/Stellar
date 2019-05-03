@@ -4,10 +4,9 @@ import ARKit
 
 
 enum PlayAnimation {
-    case regular
-    case animation
+    case unanimated
+    case animated
 }
-
 
 enum PortalChange {
     case reality
@@ -20,7 +19,12 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
 
     let customTabBarHeight = 50
     let centerNode = CenterNode.getCenterNode()
-    var playAnimation: PlayAnimation = .animation
+    var playAnimation: PlayAnimation = .unanimated {
+        didSet {
+            updateScene()
+        }
+    }
+
     var portalChange: PortalChange = .reality {
         didSet {
             updateScene()
@@ -61,46 +65,20 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
     }
 
     @objc func playPressed() {
-//        if playAnimation == .regular {
-//            playAnimation = .animation
-//        } else {
-//            playAnimation = .regular
-//        }
-//
-//
-//        switch playAnimation {
-//        case .regular:
-//
-//            sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
-//                node.removeFromParentNode()
-//            }
-//
-//            sceneView.scene.rootNode.addChildNode(centerNode)
-//            Planet.getPlanets().forEach { centerNode.addChildNode($0) }
-//            sceneView.isUserInteractionEnabled = true
-//
-//        case .animation:
-//
-//            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
-//            let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
-//
-//            sceneView.removeGestureRecognizer(tapGestureRecognizer)
-//            sceneView.removeGestureRecognizer(pinchGestureRecognizer)
-//            sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
-//                node.removeFromParentNode()
-//            }
-//            sceneView.scene.rootNode.addChildNode(centerNode)
-//            MovedPlanet.getPlanets().forEach { centerNode.addChildNode($0) }
-//            sceneView.isUserInteractionEnabled = false
-//
-//        }
+        if playAnimation == .unanimated {
+            playAnimation = .animated
+        } else {
+            playAnimation = .unanimated
+        }
     }
-    
-   
+    // public var
+    // private var
+    // lifecycle
+    // public func
+    // private func
     
     private func setUpSolarView() {
         solarView.translatesAutoresizingMaskIntoConstraints = false
-
         sceneView.addSubview(solarView)
         sceneView.bringSubviewToFront(solarView)
 
@@ -170,20 +148,23 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
             node.removeFromParentNode()
         }
-
-
-        switch portalChange {
-        case .reality:
-            sceneView.scene.rootNode.addChildNode(centerNode)
-            Planet.getPlanets().forEach { centerNode.addChildNode($0) }
-
-        case .galaxy:
+        sceneView.scene.rootNode.addChildNode(centerNode)
+        if portalChange == .galaxy {
             let cubeNode = CubeMapBox(wallHeight: 50, wallThickness: 0.1, wallLength: 50, textures: .spaceTextures)
-            sceneView.scene.rootNode.addChildNode(centerNode)
             centerNode.addChildNode(cubeNode)
+        }
+        layoutPlanets()
+    }
+    
+    private func layoutPlanets() {
+        switch playAnimation {
+        case.animated :
             MovedPlanet.getPlanets().forEach { centerNode.addChildNode($0) }
             
+        case .unanimated:
+            Planet.getPlanets().forEach { centerNode.addChildNode($0) }
         }
     }
+    
     
 }
