@@ -16,7 +16,6 @@ class SolarDetailViewController: UIViewController {
         super.viewDidLoad()
         layoutTapView()
         setUpSolarDetailView()
-
     }
 
     private func layoutTapView() {
@@ -39,6 +38,5 @@ class SolarDetailViewController: UIViewController {
             solarDetailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24),
             ])
     }
-    
 
 }
