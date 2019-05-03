@@ -24,6 +24,7 @@ class SolarView: UIView {
         mySwitch.thumbTintColor = UIColor.white
         mySwitch.onImage = UIImage(named: "icons8-news-25")
         mySwitch.offImage = UIImage(named: "icons8-planet-25")
+       
         return mySwitch
     }()
 
