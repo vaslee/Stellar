@@ -19,6 +19,7 @@ class PlanetStatCell: UIView {
     private lazy var statsDescriptionLabel: UILabel = {
         let label = UILabel()
         label.text = statText
+        label.textAlignment = .right
         label.font = UIFont(name: "Avenir-Book", size: 14)
         label.numberOfLines = 0
         label.textColor = .white
