@@ -105,16 +105,26 @@ struct MovedPlanet {
 
 extension SCNNode {
     
-    static func deepScaleNodes(node: SCNNode, scale: CGFloat) {
+    static func deepScaleNodes(node: SCNNode, scale: CGFloat,  shouldApply: (SCNNode) -> Bool ) {
+        guard shouldApply(node) else { return }
+        
         let scaleX = scale * CGFloat(node.scale.x)
         let scaleY = scale * CGFloat(node.scale.y)
         let scaleZ = scale * CGFloat(node.scale.z)
         
         let newScale = SCNVector3Make(Float(scaleX), Float(scaleY), Float(scaleZ))
-        node.scale = newScale
-        for child in node.childNodes {
-            deepScaleNode(node: child, scale: scale)
+        
+        if newScale.x < 4 && newScale.x > 0.5 {
+            node.scale = newScale
         }
+        if newScale.y < 4 && newScale.y > 0.3 {
+            node.scale = newScale
+        }
+        
+        if newScale.z < 4 && newScale.z > 0.3 {
+            node.scale = newScale
+        }
+
     }
     
     static func getNodes(name: String, image: UIImage,

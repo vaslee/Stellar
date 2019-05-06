@@ -87,15 +87,6 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
             solarView.playButton.setImage(UIImage(named: "play9"), for: .normal)
         }
     }
-    
-//    @objc func resetPressed() {
-//        if portalChange == .galaxy {
-//            //portalChange = .reality
-//            updateScene()
-//        } else {
-//            portalChange = .galaxy
-//        }
-//    }
 
     private func setUpSolarView() {
         solarView.translatesAutoresizingMaskIntoConstraints = false
@@ -109,8 +100,6 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
 
         solarView.playButton.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
         solarView.mySwitch.addTarget(self, action: #selector(portalSwitch), for: .valueChanged)
-       // solarView.switchButton.addTarget(self, action: #selector(portalSwitch), for: .touchUpInside)
-      //  solarView.resetButton.addTarget(self, action: #selector(resetPressed), for: .touchUpInside)
 
     }
 
@@ -149,11 +138,19 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         let pinchLocation = pinch.location(in: pinchView)
         let hitTest = pinchView.hitTest(pinchLocation, options: nil)
         if !hitTest.isEmpty {
-            SCNNode.deepScaleNode(node: centerNode, scale: pinch.scale)
+            SCNNode.deepScaleNode(node: centerNode,
+                                  scale: pinch.scale,
+                                  shouldApply: ({ node in
+                                    if node is CubeMapBox { return false }
+                                    return true
+                                  }))
+            
             pinch.scale = 1.0
         }
     }
 
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let configuration = ARWorldTrackingConfiguration()
