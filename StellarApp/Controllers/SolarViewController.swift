@@ -138,11 +138,19 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         let pinchLocation = pinch.location(in: pinchView)
         let hitTest = pinchView.hitTest(pinchLocation, options: nil)
         if !hitTest.isEmpty {
-            SCNNode.deepScaleNode(node: centerNode, scale: pinch.scale)
+            SCNNode.deepScaleNode(node: centerNode,
+                                  scale: pinch.scale,
+                                  shouldApply: ({ node in
+                                    if node is CubeMapBox { return false }
+                                    return true
+                                  }))
+            
             pinch.scale = 1.0
         }
     }
 
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let configuration = ARWorldTrackingConfiguration()

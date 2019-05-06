@@ -58,7 +58,7 @@ struct Planet {
             case .earth:
                 let orbitNode = SCNNode.getSphere(radius: 3.25, vector: (x: 0, y: 0, z: 0), color: .yellow)
                 let planetNode = SCNNode.getNode(name: "earth", image: UIImage(named: "art.scnassets/earth.jpg")!, radius: 0.42, vector: (x: 3.25, y: 0, z: 0), moveSpeed: 0.5, rotation: 1.2)
-                let moonOrbitNode = SCNNode.getSphere(radius: 0.47, vector: (x: 0, y: 0, z: 0), color: .blue)
+                let moonOrbitNode = SCNNode.getSphere(radius: 0.47, vector: (x: 0, y: 0, z: 0), color: .clear)
                 let moonNode = SCNNode.getNode(name: "moon", image: UIImage(named:"art.scnassets/moon.jpg")!, radius: 0.08, vector: (x: -0.47, y: 0, z: 0), moveSpeed: 0.2, rotation: 1.6)
                 
                 orbitNode.addChildNode(planetNode)
@@ -112,15 +112,25 @@ struct Planet {
 
 extension SCNNode {
     
-    static func deepScaleNode(node: SCNNode, scale: CGFloat) {
+    static func deepScaleNode(node: SCNNode, scale: CGFloat, shouldApply: (SCNNode) -> Bool ) {
+        guard shouldApply(node) else { return }
+        
         let scaleX = scale * CGFloat(node.scale.x)
         let scaleY = scale * CGFloat(node.scale.y)
         let scaleZ = scale * CGFloat(node.scale.z)
-        
+    
         let newScale = SCNVector3Make(Float(scaleX), Float(scaleY), Float(scaleZ))
-        node.scale = newScale
-        for child in node.childNodes {
-            deepScaleNode(node: child, scale: scale)
+        
+        if newScale.x < 4 && newScale.x > 0.3 {
+            node.scale = newScale
+        }
+        
+        if newScale.y < 4 && newScale.y > 0.3 {
+            node.scale = newScale
+        }
+        
+        if newScale.z < 4 && newScale.z > 0.3 {
+            node.scale = newScale
         }
     }
     
@@ -153,7 +163,7 @@ extension SCNNode {
         ringNode.geometry = ringGeo
         ringNode.position = SCNVector3(x: vector.x, y: vector.y, z: vector.z)
         ringGeo.firstMaterial?.diffuse.contents = color
-        
+
         return ringNode
     }
     

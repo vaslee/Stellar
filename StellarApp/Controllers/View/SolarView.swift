@@ -22,10 +22,14 @@ class SolarView: UIView {
         mySwitch.tintColor = UIColor.white
         mySwitch.onTintColor = UIColor.clear
         mySwitch.thumbTintColor = UIColor.white
-        mySwitch.onImage = UIImage(named: "icons8-news-25")
-        mySwitch.offImage = UIImage(named: "icons8-planet-25")
        
         return mySwitch
+    }()
+
+    public lazy var resetButton: UIButton = {
+        let resetButton = UIButton()
+        resetButton.setImage(UIImage(named: "reset"), for: .normal)
+        return resetButton
     }()
 
     init() {
@@ -41,6 +45,7 @@ class SolarView: UIView {
     private func setupView() {
         setPlayButtonConstraints()
         setSwitchConstraints()
+ 
     }
     
     func setPlayButtonConstraints() {
@@ -62,9 +67,9 @@ class SolarView: UIView {
         mySwitch.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 10),
         mySwitch.centerXAnchor.constraint(equalTo: playButton.centerXAnchor),
         mySwitch.bottomAnchor.constraint(equalTo: bottomAnchor)
+
         ])
     }
-
 }
 
 
