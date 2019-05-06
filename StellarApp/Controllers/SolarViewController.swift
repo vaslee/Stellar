@@ -13,6 +13,11 @@ enum PortalChange {
     case galaxy
 }
 
+enum PlayButtonImage {
+    case play
+    case pause
+}
+
 class SolarViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
@@ -30,6 +35,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
             updateScene()
         }
     }
+    var playButtonImage: PlayButtonImage = .pause
 
     lazy var solarView: SolarView = {
         return SolarView()
@@ -40,13 +46,8 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.delegate = self
         
-        //sceneView.showsStatistics = true
-
         updateScene()
         
-        //        Sound.playSound(sound: "background", format: "mp3")
-        
-
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapped(sender:)))
         let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(pinch:)))
         sceneView.addGestureRecognizer(tapGestureRecognizer)
@@ -65,18 +66,28 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
     }
 
     @objc func playPressed() {
+            playButtonImageChange()
         if playAnimation == .unanimated {
             playAnimation = .animated
         } else {
             playAnimation = .unanimated
         }
     }
-    // public var
-    // private var
-    // lifecycle
-    // public func
-    // private func
-    
+
+    private func playButtonImageChange() {
+        if playButtonImage == .pause {
+            playButtonImage = .play
+        } else {
+            playButtonImage = .pause
+        }
+        switch playButtonImage {
+        case .play:
+            solarView.playButton.setImage(UIImage(named: "pause"), for: .normal)
+        case .pause:
+            solarView.playButton.setImage(UIImage(named: "play9"), for: .normal)
+        }
+    }
+
     private func setUpSolarView() {
         solarView.translatesAutoresizingMaskIntoConstraints = false
         sceneView.addSubview(solarView)
@@ -89,6 +100,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
 
         solarView.playButton.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
         solarView.mySwitch.addTarget(self, action: #selector(portalSwitch), for: .valueChanged)
+
     }
 
     @objc func portalSwitch() {
@@ -126,11 +138,19 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         let pinchLocation = pinch.location(in: pinchView)
         let hitTest = pinchView.hitTest(pinchLocation, options: nil)
         if !hitTest.isEmpty {
-            SCNNode.deepScaleNode(node: centerNode, scale: pinch.scale)
+            SCNNode.deepScaleNode(node: centerNode,
+                                  scale: pinch.scale,
+                                  shouldApply: ({ node in
+                                    if node is CubeMapBox { return false }
+                                    return true
+                                  }))
+            
             pinch.scale = 1.0
         }
     }
 
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let configuration = ARWorldTrackingConfiguration()
