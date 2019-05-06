@@ -44,13 +44,13 @@ struct Planet {
                 planetNodes.append(planetNode)
                 
             case .mercury:
-                let orbitNode = SCNNode.getSphere(radius: 1.48, vector: (x: 0, y: 0, z: 0), color: .yellow)
+                let orbitNode = SCNNode.getSphere(radius: 1.48, vector: (x: 0, y: 0, z: 0), color: .white)
                 let planetNode = SCNNode.getNode(name: "mercury", image: UIImage(named: "art.scnassets/mercury.jpg")!, radius: 0.3, vector: (x: 1.48, y: 0, z: 0), moveSpeed: 1.2, rotation: 1.6)
                 orbitNode.addChildNode(planetNode)
                 planetNodes.append(orbitNode)
                 
             case .venus:
-                let orbitNode = SCNNode.getSphere(radius: 2.39, vector: (x: 0, y: 0, z: 0), color: .yellow)
+                let orbitNode = SCNNode.getSphere(radius: 2.39, vector: (x: 0, y: 0, z: 0), color: .white)
                 let planetNode = SCNNode.getNode(name: "venus", image: UIImage(named: "art.scnassets/venus.jpg")!, radius: 0.38, vector: (x: 2.39, y: 0, z: 0), moveSpeed: 0.8, rotation: 0.9)
                 orbitNode.addChildNode(planetNode)
                 planetNodes.append(orbitNode)
@@ -58,7 +58,7 @@ struct Planet {
             case .earth:
                 let orbitNode = SCNNode.getSphere(radius: 3.25, vector: (x: 0, y: 0, z: 0), color: .yellow)
                 let planetNode = SCNNode.getNode(name: "earth", image: UIImage(named: "art.scnassets/earth.jpg")!, radius: 0.42, vector: (x: 3.25, y: 0, z: 0), moveSpeed: 0.5, rotation: 1.2)
-                let moonOrbitNode = SCNNode.getSphere(radius: 0.47, vector: (x: 0, y: 0, z: 0), color: .blue)
+                let moonOrbitNode = SCNNode.getSphere(radius: 0.47, vector: (x: 0, y: 0, z: 0), color: .clear)
                 let moonNode = SCNNode.getNode(name: "moon", image: UIImage(named:"art.scnassets/moon.jpg")!, radius: 0.08, vector: (x: -0.47, y: 0, z: 0), moveSpeed: 0.2, rotation: 1.6)
                 
                 orbitNode.addChildNode(planetNode)
@@ -153,7 +153,7 @@ extension SCNNode {
         ringNode.geometry = ringGeo
         ringNode.position = SCNVector3(x: vector.x, y: vector.y, z: vector.z)
         ringGeo.firstMaterial?.diffuse.contents = color
-        
+
         return ringNode
     }
     

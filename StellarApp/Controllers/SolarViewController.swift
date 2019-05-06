@@ -87,6 +87,15 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
             solarView.playButton.setImage(UIImage(named: "play9"), for: .normal)
         }
     }
+    
+//    @objc func resetPressed() {
+//        if portalChange == .galaxy {
+//            //portalChange = .reality
+//            updateScene()
+//        } else {
+//            portalChange = .galaxy
+//        }
+//    }
 
     private func setUpSolarView() {
         solarView.translatesAutoresizingMaskIntoConstraints = false
@@ -100,6 +109,8 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
 
         solarView.playButton.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
         solarView.mySwitch.addTarget(self, action: #selector(portalSwitch), for: .valueChanged)
+       // solarView.switchButton.addTarget(self, action: #selector(portalSwitch), for: .touchUpInside)
+      //  solarView.resetButton.addTarget(self, action: #selector(resetPressed), for: .touchUpInside)
 
     }
 
