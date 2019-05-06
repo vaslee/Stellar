@@ -44,13 +44,13 @@ struct Planet {
                 planetNodes.append(planetNode)
                 
             case .mercury:
-                let orbitNode = SCNNode.getSphere(radius: 1.48, vector: (x: 0, y: 0, z: 0), color: .white)
+                let orbitNode = SCNNode.getSphere(radius: 1.48, vector: (x: 0, y: 0, z: 0), color: .yellow)
                 let planetNode = SCNNode.getNode(name: "mercury", image: UIImage(named: "art.scnassets/mercury.jpg")!, radius: 0.3, vector: (x: 1.48, y: 0, z: 0), moveSpeed: 1.2, rotation: 1.6)
                 orbitNode.addChildNode(planetNode)
                 planetNodes.append(orbitNode)
                 
             case .venus:
-                let orbitNode = SCNNode.getSphere(radius: 2.39, vector: (x: 0, y: 0, z: 0), color: .white)
+                let orbitNode = SCNNode.getSphere(radius: 2.39, vector: (x: 0, y: 0, z: 0), color: .yellow)
                 let planetNode = SCNNode.getNode(name: "venus", image: UIImage(named: "art.scnassets/venus.jpg")!, radius: 0.38, vector: (x: 2.39, y: 0, z: 0), moveSpeed: 0.8, rotation: 0.9)
                 orbitNode.addChildNode(planetNode)
                 planetNodes.append(orbitNode)
