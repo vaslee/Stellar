@@ -109,13 +109,13 @@
 			isa = PBXGroup;
 			children = (
 				90F37BD622695CBE00645186 /* SolarView.swift */,
-				2B6254D8225FA55800704ED4 /* NewsView.swift */,
 				6295AE3D2260FC7B007118E3 /* SolarDetailView.swift */,
 				62B8FEB52276646D0020E854 /* PlanetInfoView.swift */,
 				62BE7032227A4CC900B60F1F /* PlanetStatsView.swift */,
-				9033D93F2260DB8B000ACA50 /* MenuView.swift */,
 				62BE7034227A521700B60F1F /* PlanetStatsCell.swift */,
+				2B6254D8225FA55800704ED4 /* NewsView.swift */,
 				2B6254DB225FA65C00704ED4 /* NewsCollectionViewCell.swift */,
+				9033D93F2260DB8B000ACA50 /* MenuView.swift */,
 			);
 			name = View;
 			path = Controllers/View;

@@ -14,7 +14,7 @@ class SolarDetailView: UIView {
     private let planetType: PlanetType
 
     private lazy var contentView: PlanetInfoView = {
-        guard let planetInfo = PlanetInfoCache.shared.planetMapping[planetType] else {fatalError("Missing Info for Planet: \(planetType.rawValue)")}
+        guard let planetInfo = PlanetInfoCache.shared.planetMapping[planetType] else { fatalError("Missing Info for Planet: \(planetType.rawValue)") }
     return PlanetInfoView(planetInfo: planetInfo)
     }()
 

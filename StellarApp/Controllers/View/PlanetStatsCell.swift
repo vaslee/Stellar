@@ -9,6 +9,7 @@ class PlanetStatCell: UIView {
 
     private lazy var statsTitleLabel: UILabel = {
         let label = UILabel()
+        label.text = statTitle
         label.font = UIFont(name: "Avenir-Heavy", size: 14)
         label.numberOfLines = 0
         label.textColor = .white
@@ -17,6 +18,7 @@ class PlanetStatCell: UIView {
 
     private lazy var statsDescriptionLabel: UILabel = {
         let label = UILabel()
+        label.text = statText
         label.font = UIFont(name: "Avenir-Book", size: 14)
         label.numberOfLines = 0
         label.textColor = .white
@@ -66,7 +68,6 @@ class PlanetStatCell: UIView {
     private func layoutTitleLabel() {
         statsTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleContainer.addSubview(statsTitleLabel)
-
         NSLayoutConstraint.activate([
             statsTitleLabel.leadingAnchor.constraint(equalTo: titleContainer.leadingAnchor),
             statsTitleLabel.trailingAnchor.constraint(equalTo: titleContainer.trailingAnchor, constant: -4),
@@ -78,7 +79,6 @@ class PlanetStatCell: UIView {
     private func layoutDescriptionLabel() {
         statsDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionContainer.addSubview(statsDescriptionLabel)
-
         NSLayoutConstraint.activate([
             statsDescriptionLabel.leadingAnchor.constraint(equalTo: descriptionContainer.leadingAnchor, constant: 4),
             statsDescriptionLabel.trailingAnchor.constraint(equalTo: descriptionContainer.trailingAnchor),
