@@ -30,11 +30,7 @@ class PlanetStatsView: UIView {
             addSubview(cell)
             setCellConstraints(cell: cell, topAnchor: topAnchor)
             topAnchor = cell.bottomAnchor
-            if index % 2 == 0 {
-                cell.backgroundColor = .black
-            } else {
-                cell.backgroundColor = .darkGray
-            }
+            cell.backgroundColor = index % 2 == 0 ? .black : .darkGray
         }
         cells.last?.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
