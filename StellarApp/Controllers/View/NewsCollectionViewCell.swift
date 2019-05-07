@@ -31,7 +31,7 @@ class NewsCollectionViewCell: UICollectionViewCell {
     
     public lazy var articleDescription: UILabel = {
         let description = UILabel()
-        description.numberOfLines = 0
+        description.numberOfLines = 2
         description.textAlignment = .left
         description.font = UIFont.boldSystemFont(ofSize: 16.0)
         description.textColor = .black
@@ -48,11 +48,16 @@ class NewsCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        articleImage.image = UIImage.init(named: "placeholder-image")
+        articleLabel.text = nil
+        articleDescription.text = nil
+    }
+    
     private func commonInit() {
        setupConstraints()
         self.layer.cornerRadius = 10
         self.layer.masksToBounds = true
-        //self.backgroundColor = .lightGray
     }
     
     private func setupConstraints() {
@@ -87,7 +92,6 @@ class NewsCollectionViewCell: UICollectionViewCell {
             articleDescription.topAnchor.constraint(equalTo: articleLabel.bottomAnchor, constant: 4),
             articleDescription.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             articleDescription.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            //articleDescription.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)
             
             ])
         
