@@ -41,7 +41,6 @@
 		900C0E05225BEA560027BBF9 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C0E04225BEA560027BBF9 /* Protocols.swift */; };
 		900D113D227A4796007B3CDF /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900D113C227A4796007B3CDF /* Sounds.swift */; };
 		900D1143227A47CB007B3CDF /* OrbitRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900D1142227A47CB007B3CDF /* OrbitRotation.swift */; };
-		9033D9402260DB8B000ACA50 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9033D93F2260DB8B000ACA50 /* MenuView.swift */; };
 		90BAD002225E87BA00587F57 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BACFFF225E87BA00587F57 /* Planet.swift */; };
 		90BAD003225E87BA00587F57 /* CelestialBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BAD000225E87BA00587F57 /* CelestialBody.swift */; };
 		90BAD004225E87BA00587F57 /* PlanetaryBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BAD001225E87BA00587F57 /* PlanetaryBody.swift */; };
@@ -86,7 +85,6 @@
 		900C0E04225BEA560027BBF9 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		900D113C227A4796007B3CDF /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		900D1142227A47CB007B3CDF /* OrbitRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrbitRotation.swift; sourceTree = "<group>"; };
-		9033D93F2260DB8B000ACA50 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		90BACFFF225E87BA00587F57 /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		90BAD000225E87BA00587F57 /* CelestialBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelestialBody.swift; sourceTree = "<group>"; };
 		90BAD001225E87BA00587F57 /* PlanetaryBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetaryBody.swift; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 				62BE7034227A521700B60F1F /* PlanetStatsCell.swift */,
 				2B6254D8225FA55800704ED4 /* NewsView.swift */,
 				2B6254DB225FA65C00704ED4 /* NewsCollectionViewCell.swift */,
-				9033D93F2260DB8B000ACA50 /* MenuView.swift */,
 			);
 			name = View;
 			path = Controllers/View;
@@ -309,7 +306,6 @@
 				90BAD003225E87BA00587F57 /* CelestialBody.swift in Sources */,
 				90066945226E0C8600CC1770 /* CubeMapWall.swift in Sources */,
 				2B6254D9225FA55800704ED4 /* NewsView.swift in Sources */,
-				9033D9402260DB8B000ACA50 /* MenuView.swift in Sources */,
 				2BC11DD7226125D90031D26A /* SecretKeys.swift in Sources */,
 				62BE7035227A521700B60F1F /* PlanetStatsCell.swift in Sources */,
 				90BAD003225E87BA00587F57 /* CelestialBody.swift in Sources */,
