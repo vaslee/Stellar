@@ -1,7 +1,6 @@
 import Foundation
 
 struct NewsData: Codable {
-    let totalResults: Int
     let articles: [ArticleWrapper]?
     
 }
@@ -11,7 +10,7 @@ struct ArticleWrapper: Codable {
     let title: String
     let description: String
     let url: String
-    let urlToImage: String
+    let urlToImage: String?
     let publishedAt: String
     let content: String?
 }

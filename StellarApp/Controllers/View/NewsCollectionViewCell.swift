@@ -50,9 +50,9 @@ class NewsCollectionViewCell: UICollectionViewCell {
     
     private func commonInit() {
        setupConstraints()
-        self.layer.cornerRadius = 5
+        self.layer.cornerRadius = 10
         self.layer.masksToBounds = true
-        self.backgroundColor = .lightGray
+        //self.backgroundColor = .lightGray
     }
     
     private func setupConstraints() {
@@ -75,7 +75,8 @@ class NewsCollectionViewCell: UICollectionViewCell {
         addSubview(articleLabel)
         NSLayoutConstraint.activate([
             articleLabel.topAnchor.constraint(equalTo: articleImage.bottomAnchor, constant: 4),
-            articleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12)
+            articleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            articleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12)
             ])
         
     }
@@ -86,7 +87,7 @@ class NewsCollectionViewCell: UICollectionViewCell {
             articleDescription.topAnchor.constraint(equalTo: articleLabel.bottomAnchor, constant: 4),
             articleDescription.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             articleDescription.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            articleDescription.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)
+            //articleDescription.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)
             
             ])
         
