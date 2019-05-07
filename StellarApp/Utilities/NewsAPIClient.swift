@@ -2,8 +2,8 @@ import Foundation
 import UIKit
 
 final class ApiClient {
-    static func getNews (query: String, completionHandler: @escaping(AppError?, [ArticleWrapper]?) -> Void) {
-        NetworkHelper.shared.performDataTask(endpointURLString: "https://newsapi.org/v2/everything?q=\(query)&apiKey=\(SecretKeys.NewsAPIKey)", httpMethod: "GET", httpBody: nil) { (appError, data, response) in
+    static func getNews (query: String, page: Int, completionHandler: @escaping(AppError?, [ArticleWrapper]?) -> Void) {
+        NetworkHelper.shared.performDataTask(endpointURLString: "https://newsapi.org/v2/everything?q=\(query)&apiKey=\(SecretKeys.NewsAPIKey)&page=\(page)", httpMethod: "GET", httpBody: nil) { (appError, data, response) in
             if let appError = appError {
                 completionHandler(appError, nil)
             }

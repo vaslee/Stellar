@@ -32,6 +32,7 @@ class NewsView: UIView {
     
     private func commonInit() {
         setConstraints()
+        
     
     }
     

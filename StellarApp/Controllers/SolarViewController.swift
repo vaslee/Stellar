@@ -119,6 +119,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
             let planetType = PlanetType(rawValue: nodeName) {
             Sound.playSound(sound: "planetSelect", format: "wav")
             planetTapped(planetType: planetType)
+            
         }
     }
 
