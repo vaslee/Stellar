@@ -4,14 +4,18 @@ import ARKit
 
 
 enum PlayAnimation {
-    case regular
-    case animation
+    case unanimated
+    case animated
 }
-
 
 enum PortalChange {
     case reality
     case galaxy
+}
+
+enum PlayButtonImage {
+    case play
+    case pause
 }
 
 class SolarViewController: UIViewController, ARSCNViewDelegate {
@@ -20,12 +24,18 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
 
     let customTabBarHeight = 50
     let centerNode = CenterNode.getCenterNode()
-    var playAnimation: PlayAnimation = .animation
+    var playAnimation: PlayAnimation = .unanimated {
+        didSet {
+            updateScene()
+        }
+    }
+
     var portalChange: PortalChange = .reality {
         didSet {
             updateScene()
         }
     }
+    var playButtonImage: PlayButtonImage = .pause
 
     lazy var solarView: SolarView = {
         return SolarView()
@@ -36,13 +46,8 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.delegate = self
         
-        //sceneView.showsStatistics = true
-
         updateScene()
         
-        //        Sound.playSound(sound: "background", format: "mp3")
-        
-
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapped(sender:)))
         let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(pinch:)))
         sceneView.addGestureRecognizer(tapGestureRecognizer)
@@ -61,46 +66,30 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
     }
 
     @objc func playPressed() {
-//        if playAnimation == .regular {
-//            playAnimation = .animation
-//        } else {
-//            playAnimation = .regular
-//        }
-//
-//
-//        switch playAnimation {
-//        case .regular:
-//
-//            sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
-//                node.removeFromParentNode()
-//            }
-//
-//            sceneView.scene.rootNode.addChildNode(centerNode)
-//            Planet.getPlanets().forEach { centerNode.addChildNode($0) }
-//            sceneView.isUserInteractionEnabled = true
-//
-//        case .animation:
-//
-//            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
-//            let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
-//
-//            sceneView.removeGestureRecognizer(tapGestureRecognizer)
-//            sceneView.removeGestureRecognizer(pinchGestureRecognizer)
-//            sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
-//                node.removeFromParentNode()
-//            }
-//            sceneView.scene.rootNode.addChildNode(centerNode)
-//            MovedPlanet.getPlanets().forEach { centerNode.addChildNode($0) }
-//            sceneView.isUserInteractionEnabled = false
-//
-//        }
+            playButtonImageChange()
+        if playAnimation == .unanimated {
+            playAnimation = .animated
+        } else {
+            playAnimation = .unanimated
+        }
     }
-    
-   
-    
+
+    private func playButtonImageChange() {
+        if playButtonImage == .pause {
+            playButtonImage = .play
+        } else {
+            playButtonImage = .pause
+        }
+        switch playButtonImage {
+        case .play:
+            solarView.playButton.setImage(UIImage(named: "pause"), for: .normal)
+        case .pause:
+            solarView.playButton.setImage(UIImage(named: "play9"), for: .normal)
+        }
+    }
+
     private func setUpSolarView() {
         solarView.translatesAutoresizingMaskIntoConstraints = false
-
         sceneView.addSubview(solarView)
         sceneView.bringSubviewToFront(solarView)
 
@@ -111,6 +100,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
 
         solarView.playButton.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
         solarView.mySwitch.addTarget(self, action: #selector(portalSwitch), for: .valueChanged)
+
     }
 
     @objc func portalSwitch() {
@@ -148,11 +138,19 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         let pinchLocation = pinch.location(in: pinchView)
         let hitTest = pinchView.hitTest(pinchLocation, options: nil)
         if !hitTest.isEmpty {
-            SCNNode.deepScaleNode(node: centerNode, scale: pinch.scale)
+            SCNNode.deepScaleNode(node: centerNode,
+                                  scale: pinch.scale,
+                                  shouldApply: ({ node in
+                                    if node is CubeMapBox { return false }
+                                    return true
+                                  }))
+            
             pinch.scale = 1.0
         }
     }
 
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let configuration = ARWorldTrackingConfiguration()
@@ -170,20 +168,23 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
             node.removeFromParentNode()
         }
-
-
-        switch portalChange {
-        case .reality:
-            sceneView.scene.rootNode.addChildNode(centerNode)
-            Planet.getPlanets().forEach { centerNode.addChildNode($0) }
-
-        case .galaxy:
+        sceneView.scene.rootNode.addChildNode(centerNode)
+        if portalChange == .galaxy {
             let cubeNode = CubeMapBox(wallHeight: 50, wallThickness: 0.1, wallLength: 50, textures: .spaceTextures)
-            sceneView.scene.rootNode.addChildNode(centerNode)
             centerNode.addChildNode(cubeNode)
+        }
+        layoutPlanets()
+    }
+    
+    private func layoutPlanets() {
+        switch playAnimation {
+        case.animated :
             MovedPlanet.getPlanets().forEach { centerNode.addChildNode($0) }
             
+        case .unanimated:
+            Planet.getPlanets().forEach { centerNode.addChildNode($0) }
         }
     }
+    
     
 }

@@ -11,7 +11,6 @@
 		09FC1CE1225FC48500CEAAED /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC1CE0225FC48500CEAAED /* NetworkHelper.swift */; };
 		2B6254D9225FA55800704ED4 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6254D8225FA55800704ED4 /* NewsView.swift */; };
 		2B6254DC225FA65C00704ED4 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6254DB225FA65C00704ED4 /* NewsCollectionViewCell.swift */; };
-		2BC11DD322610F230031D26A /* NewsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC11DD222610F230031D26A /* NewsDataManager.swift */; };
 		2BC11DD52261101F0031D26A /* DataPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC11DD42261101F0031D26A /* DataPersistenceManager.swift */; };
 		2BC11DD7226125D90031D26A /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC11DD6226125D90031D26A /* SecretKeys.swift */; };
 		6295AE3C225E3A6C007118E3 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6295AE3B225E3A6C007118E3 /* DBService.swift */; };
@@ -52,7 +51,6 @@
 		09FC1CE0225FC48500CEAAED /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		2B6254D8225FA55800704ED4 /* NewsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsView.swift; path = ../NewsView.swift; sourceTree = "<group>"; };
 		2B6254DB225FA65C00704ED4 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
-		2BC11DD222610F230031D26A /* NewsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDataManager.swift; sourceTree = "<group>"; };
 		2BC11DD42261101F0031D26A /* DataPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistenceManager.swift; sourceTree = "<group>"; };
 		2BC11DD6226125D90031D26A /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
 		6295AE3B225E3A6C007118E3 /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 			children = (
 				900C0DF3225BE9270027BBF9 /* PlanetsInfo.swift */,
 				900C0DF5225BE9300027BBF9 /* NewsInfo.swift */,
-				2BC11DD222610F230031D26A /* NewsDataManager.swift */,
 				2BC11DD42261101F0031D26A /* DataPersistenceManager.swift */,
 			);
 			path = Models;
@@ -296,7 +293,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				900C0DF0225BE90C0027BBF9 /* NewsAPIClient.swift in Sources */,
-				2BC11DD322610F230031D26A /* NewsDataManager.swift in Sources */,
 				2B6254DC225FA65C00704ED4 /* NewsCollectionViewCell.swift in Sources */,
 				900C0DF4225BE9270027BBF9 /* PlanetsInfo.swift in Sources */,
 				62BE7033227A4CC900B60F1F /* PlanetStatsView.swift in Sources */,

@@ -14,14 +14,14 @@ class NewsView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let ncv = UICollectionView.init(frame: self.bounds, collectionViewLayout: layout)
+        ncv.backgroundColor = .clear
         ncv.register(NewsCollectionViewCell.self, forCellWithReuseIdentifier: "NewsCell")
         return ncv
-        
     }()
     
 
     override init(frame: CGRect) {
-        super.init(frame: UIScreen.main.bounds)
+        super.init(frame: .zero)
         commonInit()
     }
     
@@ -32,16 +32,16 @@ class NewsView: UIView {
     
     private func commonInit() {
         setConstraints()
+    
     }
     
     func setConstraints() {
         self.addSubview(newsCollectionView)
-        newsCollectionView.backgroundColor = .clear
         newsCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        newsCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 11).isActive = true
-        newsCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
-        newsCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
-        newsCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -11).isActive = true
+        newsCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
+        newsCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
+        newsCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+        newsCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
 }
