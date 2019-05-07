@@ -13,11 +13,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    var enableAllOrientation = true
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        if (enableAllOrientation == true){
+            return UIInterfaceOrientationMask.allButUpsideDown
+        }
+        return UIInterfaceOrientationMask.portrait
+    }
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         //let SMVC = SolarViewController() // TODO: storyboard instance
-
+        
+                
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let SMVC = storyboard.instantiateViewController(withIdentifier: "SolarViewController") as! SolarViewController
         
@@ -26,11 +36,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = UINavigationController.init(rootViewController: SMVC)
         let nav1 = UINavigationController.init(rootViewController: NVC)
         nav.tabBarItem = UITabBarItem(title: "Solar System", image: UIImage.init(named: "icons8-planet-25"), selectedImage: UIImage.init(named: "icons8-planet-25"))
-        nav1.tabBarItem = UITabBarItem(title: "News", image: UIImage.init(named: "icons8-news-25"), selectedImage: UIImage.init(named: "icons8-news-25"))
+        nav1.tabBarItem = UITabBarItem(title: "Space News", image: UIImage.init(named: "icons8-news-25"), selectedImage: UIImage.init(named: "icons8-news-25"))
         tab.viewControllers = [nav, nav1]
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = tab
         window?.makeKeyAndVisible()
+    
         return true
     }
     

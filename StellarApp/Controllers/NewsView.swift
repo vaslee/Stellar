@@ -10,18 +10,18 @@ import UIKit
 
 class NewsView: UIView {
 
-    lazy var NewsCollectionView: UICollectionView = {
+    lazy var newsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let ncv = UICollectionView.init(frame: self.bounds, collectionViewLayout: layout)
+        ncv.backgroundColor = .clear
         ncv.register(NewsCollectionViewCell.self, forCellWithReuseIdentifier: "NewsCell")
         return ncv
-        
     }()
     
-    
+
     override init(frame: CGRect) {
-        super.init(frame: UIScreen.main.bounds)
+        super.init(frame: .zero)
         commonInit()
     }
     
@@ -31,18 +31,17 @@ class NewsView: UIView {
     }
     
     private func commonInit() {
-    
         setConstraints()
+    
     }
     
     func setConstraints() {
-        self.addSubview(NewsCollectionView)
-        NewsCollectionView.backgroundColor = .clear
-        NewsCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        NewsCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 11).isActive = true
-        NewsCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
-        NewsCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
-        NewsCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -11).isActive = true
+        self.addSubview(newsCollectionView)
+        newsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        newsCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
+        newsCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
+        newsCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+        newsCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
 }

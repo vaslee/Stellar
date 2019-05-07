@@ -4,23 +4,38 @@ import ARKit
 
 
 enum PlayAnimation {
-    case regular
-    case animation
+    case unanimated
+    case animated
 }
-
 
 enum PortalChange {
     case reality
     case galaxy
 }
 
+enum PlayButtonImage {
+    case play
+    case pause
+}
+
 class SolarViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
 
+    let customTabBarHeight = 50
     let centerNode = CenterNode.getCenterNode()
-    var playAnimation: PlayAnimation = .animation
-    var portalChange: PortalChange = .reality
+    var playAnimation: PlayAnimation = .unanimated {
+        didSet {
+            updateScene()
+        }
+    }
+
+    var portalChange: PortalChange = .reality {
+        didSet {
+            updateScene()
+        }
+    }
+    var playButtonImage: PlayButtonImage = .pause
 
     lazy var solarView: SolarView = {
         return SolarView()
@@ -31,99 +46,68 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         
         sceneView.delegate = self
         
-        sceneView.showsStatistics = true
-
-        setUpSolarView()
-
-        sceneView.scene.rootNode.addChildNode(centerNode)
-        Planet.getPlanets().forEach { centerNode.addChildNode($0) }
+        updateScene()
         
-        //        Sound.playSound(sound: "background", format: "mp3")
-
-        solarView.playButton.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
-        solarView.mySwitch.addTarget(self, action: #selector(portalSwitch), for: .valueChanged)
-
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapped(sender:)))
         let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(pinch:)))
         sceneView.addGestureRecognizer(tapGestureRecognizer)
         sceneView.addGestureRecognizer(pinchGestureRecognizer)
-    }
-    
-    @objc func playPressed() {
-        if playAnimation == .regular {
-            playAnimation = .animation
-        } else {
-            playAnimation = .regular
-        }
-        
-        switch playAnimation {
-        case .regular:
-            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
-            let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
 
-            sceneView.addGestureRecognizer(tapGestureRecognizer)
-            sceneView.addGestureRecognizer(pinchGestureRecognizer)
-            sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
-                node.removeFromParentNode()
-            }
-            sceneView.scene.rootNode.addChildNode(centerNode)
-            Planet.getPlanets().forEach { centerNode.addChildNode($0) }
-            sceneView.isUserInteractionEnabled = true
-        case .animation:
-            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
-            let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
-            sceneView.removeGestureRecognizer(tapGestureRecognizer)
-            sceneView.removeGestureRecognizer(pinchGestureRecognizer)
-            sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
-                node.removeFromParentNode()
-            }
-            sceneView.scene.rootNode.addChildNode(centerNode)
-            MovedPlanet.getPlanets().forEach { centerNode.addChildNode($0) }
-            sceneView.isUserInteractionEnabled = false
-        }
+        setUpSolarView()
     }
     
+    override func viewWillLayoutSubviews() {
+        var customTabFrame = self.tabBarController?.tabBar.frame
+        customTabFrame?.size.height = CGFloat(customTabBarHeight)
+        customTabFrame?.origin.y = self.view.frame.size.height - CGFloat(customTabBarHeight)
+        self.tabBarController?.tabBar.frame = customTabFrame!
+        tabBarController?.tabBar.barTintColor = .black
+        tabBarController?.tabBar.tintColor = .white
+    }
+
+    @objc func playPressed() {
+            playButtonImageChange()
+        if playAnimation == .unanimated {
+            playAnimation = .animated
+        } else {
+            playAnimation = .unanimated
+        }
+    }
+
+    private func playButtonImageChange() {
+        if playButtonImage == .pause {
+            playButtonImage = .play
+        } else {
+            playButtonImage = .pause
+        }
+        switch playButtonImage {
+        case .play:
+            solarView.playButton.setImage(UIImage(named: "pause"), for: .normal)
+        case .pause:
+            solarView.playButton.setImage(UIImage(named: "play9"), for: .normal)
+        }
+    }
+
     private func setUpSolarView() {
         solarView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(solarView)
+        sceneView.addSubview(solarView)
+        sceneView.bringSubviewToFront(solarView)
 
         NSLayoutConstraint.activate([
-            solarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            solarView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -4)
+            solarView.topAnchor.constraint(equalTo: sceneView.safeAreaLayoutGuide.topAnchor, constant: 8),
+            solarView.trailingAnchor.constraint(equalTo: sceneView.safeAreaLayoutGuide.trailingAnchor, constant: -4)
             ])
+
+        solarView.playButton.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
+        solarView.mySwitch.addTarget(self, action: #selector(portalSwitch), for: .valueChanged)
+
     }
 
     @objc func portalSwitch() {
-        
         if portalChange == .galaxy {
             portalChange = .reality
-            //              solarView.mySwitch.isOn = true
         } else {
             portalChange = .galaxy
-            //             solarView.mySwitch.isOn = false
-        }
-        
-        switch portalChange {
-        case .reality:
-            sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
-                node.removeFromParentNode()
-            }
-            sceneView.scene.rootNode.addChildNode(centerNode)
-            Planet.getPlanets().forEach { centerNode.addChildNode($0) }
-            
-        case .galaxy:
-            sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
-                node.removeFromParentNode()
-            }
-            
-            print("hi")
-            setupScene(node: centerNode)
-            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
-            let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
-            
-            sceneView.addGestureRecognizer(tapGestureRecognizer)
-            sceneView.addGestureRecognizer(pinchGestureRecognizer)
-            MovedPlanet.getPlanets().forEach { centerNode.addChildNode($0) }
         }
     }
     
@@ -150,16 +134,22 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @objc func pinch(pinch: UIPinchGestureRecognizer) {
-        
         let pinchView = pinch.view as! SCNView
         let pinchLocation = pinch.location(in: pinchView)
         let hitTest = pinchView.hitTest(pinchLocation, options: nil)
         if !hitTest.isEmpty {
-            //            let scaleAction = SCNAction.scale(by: pinch.scale, duration: 0)
-            SCNNode.deepScaleNode(node: centerNode, scale: pinch.scale)
+            SCNNode.deepScaleNode(node: centerNode,
+                                  scale: pinch.scale,
+                                  shouldApply: ({ node in
+                                    if node is CubeMapBox { return false }
+                                    return true
+                                  }))
+            
             pinch.scale = 1.0
         }
     }
+
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -174,65 +164,27 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
-    func setupScene(node: SCNNode) {
-
-        node.position = centerNode.position
-        
-        let leftWall = createBox(isDoor: false)
-        leftWall.position = SCNVector3.init((-length/2) + width , 0 , 0)
-        leftWall.eulerAngles = SCNVector3.init(0, 180.0.degreesToRadians, 0)
-        
-        let rightWall = createBox(isDoor: false)
-        rightWall.position = SCNVector3.init((length/2) - width , 0 , 0)
-        
-        let topWall = createBox(isDoor: false)
-        topWall.position = SCNVector3.init(0, (height/2) - width , 0)
-        topWall.eulerAngles = SCNVector3.init(0, 0 , 90.0.degreesToRadians)
-        
-        let bottomWall = createBox(isDoor: false)
-        bottomWall.position = SCNVector3.init(0, (-height/2) + width, 0)
-        bottomWall.eulerAngles = SCNVector3.init(0, 0 , -90.0.degreesToRadians)
-        
-        let backWall = createBox(isDoor: false)
-        backWall.position = SCNVector3.init(0, 0, (-length/2) + width)
-        backWall.eulerAngles = SCNVector3.init(0, 90.0.degreesToRadians, 0)
-        
-        let leftDoorSide = createBox(isDoor: true)
-        leftDoorSide.position = SCNVector3.init((-length/2) + doorLength/2 , 0 , (length/2))
-        leftDoorSide.eulerAngles = SCNVector3.init(0, -90.0.degreesToRadians, 0)
-
-        let rightDoorSide = createBox(isDoor: true)
-        rightDoorSide.position = SCNVector3.init((length/2) - doorLength/2, 0 , (length/2))
-        rightDoorSide.eulerAngles = SCNVector3.init(0, -90.0.degreesToRadians, 0)
-
-        let light = SCNLight()
-        light.type = .spot
-        light.spotInnerAngle = 70
-        light.spotOuterAngle = 120
-        light.zNear = 0.00001
-        light.zFar = 5
-        light.castsShadow = true
-        light.shadowRadius = 200
-        light.shadowColor = UIColor.black.withAlphaComponent(0.3)
-        light.shadowMode = .deferred
-        let constraint = SCNLookAtConstraint(target: bottomWall)
-        constraint.isGimbalLockEnabled = true
-        
-        let lightNode = SCNNode()
-        lightNode.light = light
-        lightNode.position = SCNVector3.init(0, (height/2) - width, 0)
-        lightNode.constraints = [constraint]
-        node.addChildNode(lightNode)
-        node.addChildNode(leftWall)
-        node.addChildNode(rightWall)
-        node.addChildNode(topWall)
-        node.addChildNode(bottomWall)
-        node.addChildNode(backWall)
-        node.addChildNode(leftDoorSide)
-        node.addChildNode(rightDoorSide)
-
-        self.sceneView.scene.rootNode.addChildNode(node)
-
+    private func updateScene() {
+        sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
+            node.removeFromParentNode()
+        }
+        sceneView.scene.rootNode.addChildNode(centerNode)
+        if portalChange == .galaxy {
+            let cubeNode = CubeMapBox(wallHeight: 50, wallThickness: 0.1, wallLength: 50, textures: .spaceTextures)
+            centerNode.addChildNode(cubeNode)
+        }
+        layoutPlanets()
     }
+    
+    private func layoutPlanets() {
+        switch playAnimation {
+        case.animated :
+            MovedPlanet.getPlanets().forEach { centerNode.addChildNode($0) }
+            
+        case .unanimated:
+            Planet.getPlanets().forEach { centerNode.addChildNode($0) }
+        }
+    }
+    
     
 }
