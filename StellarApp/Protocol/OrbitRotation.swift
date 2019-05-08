@@ -23,10 +23,9 @@ class RotatingNode: SCNNode, Rotatable {
     private var isRotating: Bool = false
     let rotationVector: RotationVector
     
-    init(geometry: SCNGeometry, rotationVector: RotationVector) {
+    init(rotationVector: RotationVector) {
         self.rotationVector = rotationVector
         super.init()
-        self.geometry = geometry
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,11 +33,14 @@ class RotatingNode: SCNNode, Rotatable {
     }
     
     func rotate() {
-        self.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: rotationVector.x, y: rotationVector.y, z: rotationVector.z, duration: 1)), forKey: "rotateNode")
+        self.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: rotationVector.x,
+                                                                  y: rotationVector.y,
+                                                                  z: rotationVector.z,
+                                                                  duration: 1)),
+                                                forKey: "rotateNode")
     }
     
     func stopRotating() {
         self.removeAction(forKey: "rotateNode")
     }
-    
 }
