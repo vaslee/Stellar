@@ -4,19 +4,22 @@ For our app Stellar, users will be able to use AR (augmented reality) to learn a
 
 ## App Overview
 ![WechatIMG7353](https://user-images.githubusercontent.com/43765300/56370464-40809480-61c9-11e9-970f-3757b0e46f78.png)
-![WechatIMG7354](https://user-images.githubusercontent.com/43765300/56370319-fe575300-61c8-11e9-93e1-cf92ffa735be.png)
-![WechatIMG7355](https://user-images.githubusercontent.com/43765300/56370320-fe575300-61c8-11e9-8c6a-d041737323ae.png)
-![WechatIMG7357](https://user-images.githubusercontent.com/43765300/56370321-fe575300-61c8-11e9-9ab7-a6a5b9c931a7.png)
+![WechatIMG47](https://user-images.githubusercontent.com/43765300/57381430-e5631180-7178-11e9-9079-cb0ada90f19e.png)
+
+![May-08-2019 10-08-02](https://user-images.githubusercontent.com/43765300/57381571-3115bb00-7179-11e9-9064-a53c5162f591.gif)
+
+![news1](https://user-images.githubusercontent.com/43765300/57381493-0a578480-7179-11e9-904d-38582daf7293.gif)
+
 
 
 ## Stellar MVP Checklist Requirements
 
 - [x] User can view solar system in AR
-- [ ] User can manipulate solar system 
-- [ ] User can click on planet or moon and get information about the selected icon
-- [ ] User can click on anywhere on the screen to dismiss the planet’s info screen
-- [ ] User change background to real world or default 
-- [ ] User can tap on a side menu and see live news from NASA and see settings
+- [x] User can manipulate solar system 
+- [x] User can click on planets and get information about the selected icon
+- [x] User can click on anywhere on the screen to dismiss the planet’s info screen
+- [x] User change background to real world or galaxy 
+- [x] User can tap on a bottom and see live news from NASA
 - [x] User can able to pinch to zoom/enlarge the planet to see more detail on it
 
 ## Built With
