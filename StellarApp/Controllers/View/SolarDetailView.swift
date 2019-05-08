@@ -12,8 +12,9 @@ class SolarDetailView: UIView {
 
     private let cornerRadiusMeasurement: CGFloat = 10
     private let planetType: PlanetType
+
     private lazy var contentView: PlanetInfoView = {
-        guard let planetInfo = PlanetInfoCache.shared.planetMapping[planetType] else {fatalError("Missing Info for Planet: \(planetType.rawValue)")}
+        guard let planetInfo = PlanetInfoCache.shared.planetMapping[planetType] else { fatalError("Missing Info for Planet: \(planetType.rawValue)") }
     return PlanetInfoView(planetInfo: planetInfo)
     }()
 

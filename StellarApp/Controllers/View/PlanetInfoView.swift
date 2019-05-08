@@ -19,11 +19,7 @@ class PlanetInfoView: UIView {
         return label
     }()
 
-    private lazy var planetStatsView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .red
-        return view
-    }()
+    private lazy var planetStatsView = PlanetStatsView(planetInfo: planetInfo)
 
     init(planetInfo: PlanetInfo) {
         self.planetInfo = planetInfo
@@ -65,7 +61,6 @@ class PlanetInfoView: UIView {
         planetStatsView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             planetStatsView.topAnchor.constraint(equalTo: planetDescriptionLabel.bottomAnchor, constant: 16),
-            planetStatsView.heightAnchor.constraint(equalToConstant: 200),
             planetStatsView.leadingAnchor.constraint(equalTo: leadingAnchor),
             planetStatsView.trailingAnchor.constraint(equalTo: trailingAnchor),
             planetStatsView.bottomAnchor.constraint(equalTo: bottomAnchor)
@@ -73,5 +68,6 @@ class PlanetInfoView: UIView {
     }
 
 }
+
 
 
