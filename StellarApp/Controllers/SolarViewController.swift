@@ -40,14 +40,19 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
     lazy var solarView: SolarView = {
         return SolarView()
     }()
+    
+    let cubeNode = CubeMapBox(wallHeight: 50, wallThickness: 0.1, wallLength: 50, textures: .spaceTextures)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         sceneView.delegate = self
-        
+
+        sceneView.scene.rootNode.addChildNode(centerNode)
+        centerNode.addChildNode(cubeNode)
+        MovedPlanet.getPlanets().forEach({centerNode.addChildNode($0)})
         updateScene()
-        
+
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapped(sender:)))
         let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(pinch:)))
         sceneView.addGestureRecognizer(tapGestureRecognizer)
@@ -166,13 +171,10 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
     }
 
     private func updateScene() {
-        sceneView.scene.rootNode.enumerateChildNodes { (node, stop ) in
-            node.removeFromParentNode()
-        }
-        sceneView.scene.rootNode.addChildNode(centerNode)
         if portalChange == .galaxy {
-            let cubeNode = CubeMapBox(wallHeight: 50, wallThickness: 0.1, wallLength: 50, textures: .spaceTextures)
-            centerNode.addChildNode(cubeNode)
+            cubeNode.isHidden = false
+        } else {
+            cubeNode.isHidden = true
         }
         layoutPlanets()
     }
@@ -180,10 +182,13 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
     private func layoutPlanets() {
         switch playAnimation {
         case.animated :
-            MovedPlanet.getPlanets().forEach { centerNode.addChildNode($0) }
-            
+            centerNode.enumerateChildNodes { (node, _) in
+                (node as? Rotatable)?.rotate()
+            }
         case .unanimated:
-            Planet.getPlanets().forEach { centerNode.addChildNode($0) }
+            centerNode.enumerateChildNodes { (node, _) in
+                (node as? Rotatable)?.stopRotating()
+            }
         }
     }
     

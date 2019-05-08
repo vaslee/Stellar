@@ -39,7 +39,6 @@
 		900C0E05225BEA560027BBF9 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900C0E04225BEA560027BBF9 /* Protocols.swift */; };
 		900D113D227A4796007B3CDF /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900D113C227A4796007B3CDF /* Sounds.swift */; };
 		900D1143227A47CB007B3CDF /* OrbitRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900D1142227A47CB007B3CDF /* OrbitRotation.swift */; };
-		90BAD002225E87BA00587F57 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BACFFF225E87BA00587F57 /* Planet.swift */; };
 		90BAD003225E87BA00587F57 /* CelestialBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BAD000225E87BA00587F57 /* CelestialBody.swift */; };
 		90BAD004225E87BA00587F57 /* PlanetaryBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BAD001225E87BA00587F57 /* PlanetaryBody.swift */; };
 		90F37BD522695C0400645186 /* PlanetsMoved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F37BD422695C0400645186 /* PlanetsMoved.swift */; };
@@ -81,7 +80,6 @@
 		900C0E04225BEA560027BBF9 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		900D113C227A4796007B3CDF /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		900D1142227A47CB007B3CDF /* OrbitRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrbitRotation.swift; sourceTree = "<group>"; };
-		90BACFFF225E87BA00587F57 /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		90BAD000225E87BA00587F57 /* CelestialBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CelestialBody.swift; sourceTree = "<group>"; };
 		90BAD001225E87BA00587F57 /* PlanetaryBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetaryBody.swift; sourceTree = "<group>"; };
 		90F37BD422695C0400645186 /* PlanetsMoved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsMoved.swift; sourceTree = "<group>"; };
@@ -207,7 +205,6 @@
 			children = (
 				90BAD000225E87BA00587F57 /* CelestialBody.swift */,
 				90BAD001225E87BA00587F57 /* PlanetaryBody.swift */,
-				90BACFFF225E87BA00587F57 /* Planet.swift */,
 				90F37BD422695C0400645186 /* PlanetsMoved.swift */,
 				900D1142227A47CB007B3CDF /* OrbitRotation.swift */,
 				900D113C227A4796007B3CDF /* Sounds.swift */,
@@ -311,7 +308,6 @@
 				2BC11DD52261101F0031D26A /* DataPersistenceManager.swift in Sources */,
 				62B8FEB62276646D0020E854 /* PlanetInfoView.swift in Sources */,
 				900A58C22257F01100C2C626 /* SolarViewController.swift in Sources */,
-				90BAD002225E87BA00587F57 /* Planet.swift in Sources */,
 				900C0E00225BE9E90027BBF9 /* NewsViewController.swift in Sources */,
 				900D1143227A47CB007B3CDF /* OrbitRotation.swift in Sources */,
 				900465AC227272D50066D13D /* CubeMapBox.swift in Sources */,
