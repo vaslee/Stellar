@@ -23,7 +23,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
 
     let customTabBarHeight = 50
-    let centerNode = CenterNode.getCenterNode()
+    let centerNode = NewCenterNode.getCenterNode()
     var playAnimation: PlayAnimation = .unanimated {
         didSet {
             updateScene()

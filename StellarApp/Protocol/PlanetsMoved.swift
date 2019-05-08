@@ -9,10 +9,24 @@
 import UIKit
 import ARKit
 
+enum PlanetType: String, CaseIterable{
+    
+    case sun
+    case mercury
+    case venus
+    case earth
+    case mars
+    case jupiter
+    case saturn
+    case uranus
+    case neptune
+    case pluto
+}
+
 struct NewCenterNode {
     static func getCenterNode() -> SCNNode {
         
-        return SCNNode.getNodes(name: "sun", image: UIImage(named: "art.scnassets/sun.jpg")!, radius: CGFloat.leastNormalMagnitude, vector: (x: -1, y: 0, z: 0), moveSpeed: 0, rotation: 0)
+        return SCNNode.getNodes(name: "sun", image: UIImage(named: "art.scnassets/sun.jpg")!, radius: CGFloat.leastNormalMagnitude, vector: (x: 0, y: -2, z: -13), moveSpeed: 0, rotation: 0)
     }
 }
 
@@ -181,7 +195,7 @@ struct MovedPlanet {
 
 extension SCNNode {
     
-    static func deepScaleNodes(node: SCNNode, scale: CGFloat,  shouldApply: (SCNNode) -> Bool ) {
+    static func deepScaleNode(node: SCNNode, scale: CGFloat,  shouldApply: (SCNNode) -> Bool ) {
         guard shouldApply(node) else { return }
         
         let scaleX = scale * CGFloat(node.scale.x)
