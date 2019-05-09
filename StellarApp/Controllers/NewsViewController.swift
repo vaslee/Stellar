@@ -22,15 +22,16 @@ class NewsViewController: UIViewController {
         newsView.newsCollectionView.dataSource = self
         getArticles(keyword: keyword, pageNumber: pageNumber)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.enableAllOrientation = false
         
         let value = UIInterfaceOrientation.portrait.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
     }
+    
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
