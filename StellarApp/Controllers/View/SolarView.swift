@@ -27,6 +27,7 @@ class SolarView: UIView {
        
         return mySwitch
     }()
+    
 
     init() {
         super.init(frame: .zero)

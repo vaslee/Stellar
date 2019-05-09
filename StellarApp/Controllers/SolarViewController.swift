@@ -50,6 +50,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapped(sender:)))
         let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(pinch:)))
+
         sceneView.addGestureRecognizer(tapGestureRecognizer)
         sceneView.addGestureRecognizer(pinchGestureRecognizer)
 
@@ -100,7 +101,6 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
 
         solarView.playButton.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
         solarView.mySwitch.addTarget(self, action: #selector(portalSwitch), for: .valueChanged)
-
     }
 
     @objc func portalSwitch() {
@@ -110,7 +110,6 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
             portalChange = .galaxy
         }
     }
-    
     @objc func tapped(sender: UITapGestureRecognizer) {
         let tappedView = sender.view as!SCNView
         let touchLocation = sender.location(in: tappedView)
@@ -121,7 +120,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
             planetTapped(planetType: planetType)
         }
     }
-
+    
     private func planetTapped(planetType: PlanetType) {
         let vc = SolarDetailViewController()
         vc.planetType = planetType
