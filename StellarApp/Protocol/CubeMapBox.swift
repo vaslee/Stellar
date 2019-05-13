@@ -86,7 +86,7 @@ extension UIImage {
 
 extension CubeMapTextures {
     static let spaceTextures: CubeMapTextures = {
-        let image = UIImage(imageName: "nightstar.jpg")
+        let image = UIImage(imageName: "stars.jpeg")
         return CubeMapTextures(front: image, back: image, top: image, left: image, right: image, bottom: image)
     }()
 }
