@@ -160,12 +160,14 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         let configuration = ARWorldTrackingConfiguration()
         sceneView.session.run(configuration)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+ 
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
         navigationController?.setNavigationBarHidden(false, animated: animated)
+        
     }
 
     private func updateScene() {
