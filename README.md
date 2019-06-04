@@ -26,6 +26,7 @@ For our app Stellar, users will be able to use AR (augmented reality) to learn a
 * SceneKit
 * ProgrammticUI 
 * ARKit
+* UIKit
 
 ## Prerequisites
 * Xcode - 10.0+, set up on Swift Language
@@ -34,7 +35,8 @@ For our app Stellar, users will be able to use AR (augmented reality) to learn a
 
 ## Bonus
 * Multi-Language
-* Speech of English Language
+* Text-to-speech Language
+* More celestial objects 
 
 
 ## Group Members
