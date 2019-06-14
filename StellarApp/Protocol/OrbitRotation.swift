@@ -1,11 +1,3 @@
-//
-//  OrbitRotation.swift
-//  StellarApp
-//
-//  Created by TingxinLi on 5/1/19.
-//  Copyright © 2019 TingxinLi. All rights reserved.
-//
-
 import Foundation
 import UIKit
 import ARKit

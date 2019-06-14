@@ -111,6 +111,8 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
     @objc func portalSwitch() {
         if portalChange == .galaxy {
             portalChange = .reality
+            UIView.animate(withDuration: 1.0, delay: 0.5, options: .curveEaseOut, animations: {
+            }, completion: nil)
         } else {
             portalChange = .galaxy
         }
@@ -171,6 +173,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
     }
 
     private func updateScene() {
+    
         if portalChange == .galaxy {
             cubeNode.isHidden = false
         } else {

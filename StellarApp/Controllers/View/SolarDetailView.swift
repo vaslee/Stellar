@@ -1,11 +1,3 @@
-//
-//  SolarDetailView.swift
-//  StellarApp
-//
-//  Created by Diego Estrella III on 4/12/19.
-//  Copyright © 2019 TingxinLi. All rights reserved.
-//
-
 import UIKit
 
 class SolarDetailView: UIView {

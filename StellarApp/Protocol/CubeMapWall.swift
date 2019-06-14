@@ -1,10 +1,3 @@
-//
-//  Extension-Indoor.swift
-//  StellarApp
-//
-//  Created by TingxinLi on 4/22/19.
-//  Copyright © 2019 TingxinLi. All rights reserved.
-//
 
 import Foundation
 import ARKit

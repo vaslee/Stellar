@@ -1,11 +1,3 @@
-//
-//  PlanetStatsView.swift
-//  StellarApp
-//
-//  Created by Diego Estrella III on 5/1/19.
-//  Copyright © 2019 TingxinLi. All rights reserved.
-//
-
 import UIKit
 
 class PlanetStatsView: UIView {

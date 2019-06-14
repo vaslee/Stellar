@@ -1,11 +1,3 @@
-//
-//  CubeMapBox.swift
-//  StellarApp
-//
-//  Created by TingxinLi on 4/25/19.
-//  Copyright © 2019 TingxinLi. All rights reserved.
-//
-
 import Foundation
 import SceneKit
 
