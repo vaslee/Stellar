@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  StellarApp
-//
-//  Created by TingxinLi on 4/5/19.
-//  Copyright © 2019 TingxinLi. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain

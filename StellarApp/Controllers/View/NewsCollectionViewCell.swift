@@ -1,11 +1,3 @@
-//
-//  NewsCollectionViewCell.swift
-//  StellarApp
-//
-//  Created by Ramu on 4/11/19.
-//  Copyright © 2019 TingxinLi. All rights reserved.
-//
-
 import UIKit
 
 class NewsCollectionViewCell: UICollectionViewCell {

@@ -11,7 +11,6 @@
 		09FC1CE1225FC48500CEAAED /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC1CE0225FC48500CEAAED /* NetworkHelper.swift */; };
 		2B6254D9225FA55800704ED4 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6254D8225FA55800704ED4 /* NewsView.swift */; };
 		2B6254DC225FA65C00704ED4 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6254DB225FA65C00704ED4 /* NewsCollectionViewCell.swift */; };
-		2BC11DD52261101F0031D26A /* DataPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC11DD42261101F0031D26A /* DataPersistenceManager.swift */; };
 		2BC11DD7226125D90031D26A /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC11DD6226125D90031D26A /* SecretKeys.swift */; };
 		6295AE3C225E3A6C007118E3 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6295AE3B225E3A6C007118E3 /* DBService.swift */; };
 		6295AE3E2260FC7B007118E3 /* SolarDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6295AE3D2260FC7B007118E3 /* SolarDetailView.swift */; };
@@ -50,7 +49,6 @@
 		09FC1CE0225FC48500CEAAED /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		2B6254D8225FA55800704ED4 /* NewsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsView.swift; path = ../NewsView.swift; sourceTree = "<group>"; };
 		2B6254DB225FA65C00704ED4 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
-		2BC11DD42261101F0031D26A /* DataPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistenceManager.swift; sourceTree = "<group>"; };
 		2BC11DD6226125D90031D26A /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
 		6295AE3B225E3A6C007118E3 /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
 		6295AE3D2260FC7B007118E3 /* SolarDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarDetailView.swift; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 			children = (
 				900C0DF3225BE9270027BBF9 /* PlanetsInfo.swift */,
 				900C0DF5225BE9300027BBF9 /* NewsInfo.swift */,
-				2BC11DD42261101F0031D26A /* DataPersistenceManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -305,7 +302,6 @@
 				62B8FEB4227299EF0020E854 /* TapRecognizerView.swift in Sources */,
 				90BAD004225E87BA00587F57 /* PlanetaryBody.swift in Sources */,
 				900C0E05225BEA560027BBF9 /* Protocols.swift in Sources */,
-				2BC11DD52261101F0031D26A /* DataPersistenceManager.swift in Sources */,
 				62B8FEB62276646D0020E854 /* PlanetInfoView.swift in Sources */,
 				900A58C22257F01100C2C626 /* SolarViewController.swift in Sources */,
 				900C0E00225BE9E90027BBF9 /* NewsViewController.swift in Sources */,
