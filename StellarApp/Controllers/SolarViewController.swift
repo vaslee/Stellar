@@ -22,7 +22,7 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
 
-    let customTabBarHeight = 50
+    //let customTabBarHeight = 50
     let centerNode = NewCenterNode.getCenterNode()
     var playAnimation: PlayAnimation = .unanimated {
         didSet {
@@ -61,14 +61,14 @@ class SolarViewController: UIViewController, ARSCNViewDelegate {
         setUpSolarView()
     }
     
-    override func viewWillLayoutSubviews() {
-        var customTabFrame = self.tabBarController?.tabBar.frame
-        customTabFrame?.size.height = CGFloat(customTabBarHeight)
-        customTabFrame?.origin.y = self.view.frame.size.height - CGFloat(customTabBarHeight)
-        self.tabBarController?.tabBar.frame = customTabFrame!
-        tabBarController?.tabBar.barTintColor = .black
-        tabBarController?.tabBar.tintColor = .white
-    }
+//    override func viewWillLayoutSubviews() {
+//        var customTabFrame = self.tabBarController?.tabBar.frame
+//        customTabFrame?.size.height = CGFloat(customTabBarHeight)
+//        customTabFrame?.origin.y = self.view.frame.size.height - CGFloat(customTabBarHeight)
+//        self.tabBarController?.tabBar.frame = customTabFrame!
+//        tabBarController?.tabBar.barTintColor = .black
+//        tabBarController?.tabBar.tintColor = .white
+//    }
 
     @objc func playPressed() {
             playButtonImageChange()

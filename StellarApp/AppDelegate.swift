@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let SMVC = storyboard.instantiateViewController(withIdentifier: "SolarViewController") as! SolarViewController
         
-        let NVC = NewsViewController()
+        let NVC = NasaViewController()
         let tab = UITabBarController()
         let nav = UINavigationController.init(rootViewController: SMVC)
         let nav1 = UINavigationController.init(rootViewController: NVC)

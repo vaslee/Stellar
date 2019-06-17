@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		091A5FAD22B7DDF300BBDCFD /* NasaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091A5FAC22B7DDF300BBDCFD /* NasaViewController.swift */; };
 		09FC1CDF225FC3FE00CEAAED /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC1CDE225FC3FE00CEAAED /* AppError.swift */; };
 		09FC1CE1225FC48500CEAAED /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FC1CE0225FC48500CEAAED /* NetworkHelper.swift */; };
 		2B6254D9225FA55800704ED4 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6254D8225FA55800704ED4 /* NewsView.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		091A5FAC22B7DDF300BBDCFD /* NasaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaViewController.swift; sourceTree = "<group>"; };
 		09FC1CDE225FC3FE00CEAAED /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		09FC1CE0225FC48500CEAAED /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		2B6254D8225FA55800704ED4 /* NewsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsView.swift; path = ../NewsView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				900A58C12257F01100C2C626 /* SolarViewController.swift */,
 				900C0DFB225BE9C90027BBF9 /* SolarDetailViewController.swift */,
 				900C0DFF225BE9E90027BBF9 /* NewsViewController.swift */,
+				091A5FAC22B7DDF300BBDCFD /* NasaViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				62BE7035227A521700B60F1F /* PlanetStatsCell.swift in Sources */,
 				90BAD003225E87BA00587F57 /* CelestialBody.swift in Sources */,
 				900D113D227A4796007B3CDF /* Sounds.swift in Sources */,
+				091A5FAD22B7DDF300BBDCFD /* NasaViewController.swift in Sources */,
 				2B6254D9225FA55800704ED4 /* NewsView.swift in Sources */,
 				09FC1CDF225FC3FE00CEAAED /* AppError.swift in Sources */,
 				62B8FEB4227299EF0020E854 /* TapRecognizerView.swift in Sources */,
